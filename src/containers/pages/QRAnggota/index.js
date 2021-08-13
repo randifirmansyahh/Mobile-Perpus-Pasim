@@ -46,6 +46,7 @@ class QRAnggota extends Component {
               width: 50,
               borderRadius: 50,
               backgroundColor: 'white',
+              marginLeft: 16,
             }}
           />
           <Text style={{color: 'white', fontSize: 17, marginLeft: 10}}>
@@ -124,14 +125,14 @@ class QRAnggota extends Component {
               style={{width: '90%', flexDirection: 'row', marginVertical: 10}}>
               <Text>1. </Text>
               <Text style={{marginLeft: 10}}>
-                Datanglah ke perpustakaan Universitas Nasional PASIM
+                Datanglah ke perpustakaan Universitas Nasional PASIM.
               </Text>
             </View>
             <View
               style={{width: '90%', flexDirection: 'row', marginVertical: 10}}>
               <Text>2. </Text>
               <Text style={{marginLeft: 10}}>
-                Scan QR Code kamu dengan Scanner yang disediakan oleh petugas
+                Scan QR Code kamu dengan Scanner yang disediakan oleh petugas.
               </Text>
             </View>
             <View

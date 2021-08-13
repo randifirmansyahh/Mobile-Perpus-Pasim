@@ -11,6 +11,7 @@ import GoBanner from './../../../components/molecules/GoBanner';
 import GoInfo from './../../../components/molecules/GoInfo';
 import WebPasim from './../../../components/molecules/WebPasim';
 import WebPub from './../../../components/molecules/WebPub';
+import Header from './../../../components/molecules/Header';
 
 // Containers
 import NavBar from './../../../containers/organisms/NavBar';
@@ -53,6 +54,7 @@ class Home extends Component {
 
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
+        <Header />
         <ScrollView style={{flex: 1}}>
           <SearchFeature />
           <HomeGopay />

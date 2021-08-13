@@ -9,6 +9,7 @@ import Auth from './Auth';
 import Account from './Account';
 import Bantuan from './Bantuan';
 import QRAnggota from './QRAnggota';
+import CariBuku from './CariBuku';
 
 export {
   Auth,
@@ -22,4 +23,5 @@ export {
   Daftar,
   Bantuan,
   QRAnggota,
+  CariBuku,
 };

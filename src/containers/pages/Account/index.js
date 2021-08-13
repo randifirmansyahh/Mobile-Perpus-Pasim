@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Navbar from './../../../containers/organisms/NavBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import FloatingButton from '../../../components/molecules/FloatingButton';
 
 export default class Account extends React.Component {
   constructor(props) {
@@ -212,6 +213,7 @@ export default class Account extends React.Component {
             </Text>
           </View>
         </ImageBackground>
+        <FloatingButton />
         <Navbar />
       </View>
     );

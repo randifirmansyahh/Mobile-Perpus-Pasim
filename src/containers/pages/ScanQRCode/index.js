@@ -60,6 +60,7 @@ class ScanQRCode extends PureComponent {
     super(props);
     this.state = {
       nim: '',
+      pos: 'back',
     };
 
     AsyncStorage.getItem('@nim', (error, result) => {
@@ -78,7 +79,6 @@ class ScanQRCode extends PureComponent {
   }
   state = {
     barcode: '',
-    pos: 'back',
   };
   render() {
     return (
@@ -218,7 +218,7 @@ class ScanQRCode extends PureComponent {
                 }}>
                 <Text>1. </Text>
                 <Text style={{marginLeft: 10}}>
-                  Datanglah ke perpustakaan Universitas Nasional PASIM
+                  Datanglah ke perpustakaan Universitas Nasional PASIM.
                 </Text>
               </View>
               <View
@@ -254,7 +254,7 @@ class ScanQRCode extends PureComponent {
                 <Text>4. </Text>
                 <Text style={{marginLeft: 10}}>
                   Tunggu sampai QR Code muncul di layar aplikasi, kemudian minta
-                  petugas untuk melakukan scan pada Barcode di aplikasi anda
+                  petugas untuk melakukan scan pada Barcode di aplikasi anda.
                 </Text>
               </View>
             </View>

@@ -12,6 +12,7 @@ import {
   Account,
   Bantuan,
   QRAnggota,
+  CariBuku,
 } from './../../containers/pages';
 
 const HomeStack = createStackNavigator(
@@ -20,6 +21,8 @@ const HomeStack = createStackNavigator(
     NewsDetail,
     ScanQRCode,
     QRAnggota,
+    Bantuan,
+    CariBuku,
   },
   {
     headerMode: 'none',
@@ -72,16 +75,6 @@ const OrdersStack = createStackNavigator(
   },
 );
 
-const BantuanStack = createStackNavigator(
-  {
-    Bantuan,
-  },
-  {
-    headerMode: 'none',
-    initialRouteName: 'Bantuan',
-  },
-);
-
 const Router = createSwitchNavigator(
   {
     HomeStack,
@@ -89,11 +82,10 @@ const Router = createSwitchNavigator(
     ScanStack,
     LoginStack,
     AccountStack,
-    BantuanStack,
   },
   {
     headerMode: 'none',
-    initialRouteName: 'HomeStack',
+    initialRouteName: 'LoginStack',
   },
 );
 

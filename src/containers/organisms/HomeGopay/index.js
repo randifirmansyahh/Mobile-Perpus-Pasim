@@ -64,12 +64,12 @@ class HomeGopay extends Component {
             img={require('./../../../assets/images/icon/qr-code.png')}
           />
           <GopayFeature
-            onPress={() => this.props.navigation.navigate('')}
+            onPress={() => this.props.navigation.navigate('CariBuku')}
             title="Cari Buku"
             img={require('./../../../assets/images/icon/books.png')}
           />
           <GopayFeature
-            onPress={() => this.props.navigation.navigate('')}
+            onPress={() => this.props.navigation.navigate('Bantuan')}
             title="Bantuan"
             img={require('./../../../assets/images/icon/headphone.png')}
           />

@@ -8,7 +8,7 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ac: '',
+      ac: 'Home',
     };
 
     AsyncStorage.getItem('@ac', (error, result) => {
