@@ -6,15 +6,25 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 
 export default class Daftar extends React.Component {
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       formNim: '',
       formNama: '',
       formPass: '',
+      formHp: '',
+      formEmail: '',
     };
     // hosting
     this.url = 'https://perpuspasim.000webhostapp.com/ApiAnggota.php';
@@ -24,11 +34,13 @@ export default class Daftar extends React.Component {
     // this.url = 'http://192.168.43.216/Mine/Crudphpapi/ApiAnggota.php';
   }
 
-  async daftarAnggota(nim, nama, pass) {
+  async daftarAnggota(nim, nama, pass, hp, email) {
     if (
       this.state.formNim == '' &&
       this.state.formNama == '' &&
-      this.state.formPass == ''
+      this.state.formPass == '' &&
+      this.state.formHp == '' &&
+      this.state.formEmail == ''
     ) {
       alert('Harap isi semua data');
     } else if (this.state.formNim == '') {
@@ -37,15 +49,30 @@ export default class Daftar extends React.Component {
       alert('Masukan Nama Lengkap terlebih dahulu');
     } else if (this.state.formPass == '') {
       alert('Masukan Password terlebih dahulu');
+    } else if (this.state.formHp == '') {
+      alert('Masukan No Hp terlebih dahulu');
+    } else if (this.state.formEmail == '') {
+      alert('Masukan Email terlebih dahulu');
     } else {
       let create = this.url + '?op=create';
+      this.setState({isLoading: true});
       try {
         await fetch(create, {
           method: 'post',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: 'nim=' + nim + '&nama=' + nama + '&password=' + pass,
+          body:
+            'nim=' +
+            nim +
+            '&nama=' +
+            nama +
+            '&password=' +
+            pass +
+            '&hp=' +
+            hp +
+            '&email=' +
+            email,
         })
           .then(response => response.json())
           .then(json => {
@@ -58,6 +85,8 @@ export default class Daftar extends React.Component {
           );
       } catch (error) {
         // alert('Pendaftaran akun gagal, Server sedang sibuk');
+      } finally {
+        this.setState({isLoading: false});
       }
     }
   }
@@ -161,7 +190,7 @@ export default class Daftar extends React.Component {
               borderBottomRightRadius: 80,
               borderTopLeftRadius: 80,
             }}>
-            <View style={{alignItems: 'center', marginVertical: 150}}>
+            <View style={{alignItems: 'center', marginVertical: 60}}>
               <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>
                 SILAHKAN DAFTAR
               </Text>
@@ -204,11 +233,50 @@ export default class Daftar extends React.Component {
                     borderRadius: 10,
                     paddingLeft: 16,
                   }}
-                  secureTextEntry
                   placeholder="Password"
                   placeholderTextColor="#a6a6a6"
                   onChangeText={textPass => {
                     this.setState({formPass: textPass});
+                  }}
+                />
+                <View
+                  style={{
+                    backgroundColor: 'white',
+                    width: '70%',
+                    borderRadius: 10,
+                    paddingLeft: 16,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginTop: 20,
+                  }}>
+                  <Text>+62</Text>
+                  <TextInput
+                    style={{
+                      backgroundColor: 'white',
+                      width: '70%',
+                      borderRadius: 10,
+                    }}
+                    placeholder="No Telepon"
+                    placeholderTextColor="#a6a6a6"
+                    onChangeText={textHp => {
+                      this.setState({formHp: textHp});
+                    }}
+                    keyboardType="numeric"
+                  />
+                </View>
+                <TextInput
+                  style={{
+                    backgroundColor: 'white',
+                    width: '70%',
+                    marginTop: 20,
+                    borderRadius: 10,
+                    paddingLeft: 16,
+                  }}
+                  secureTextEntry
+                  placeholder="Email"
+                  placeholderTextColor="#a6a6a6"
+                  onChangeText={textEmail => {
+                    this.setState({formEmail: textEmail});
                   }}
                 />
               </View>
@@ -224,6 +292,16 @@ export default class Daftar extends React.Component {
               borderTopLeftRadius: 80,
             }}>
             <View style={{alignItems: 'center'}}>
+              {this.state.isLoading == true ? (
+                <View
+                  style={{
+                    alignItems: 'center',
+                    flex: 2,
+                    marginTop: 40,
+                  }}>
+                  <ActivityIndicator size="large" color="#540000" />
+                </View>
+              ) : null}
               <TouchableOpacity
                 style={{
                   backgroundColor: '#1C2938',
@@ -238,6 +316,8 @@ export default class Daftar extends React.Component {
                     this.state.formNim,
                     this.state.formNama,
                     this.state.formPass,
+                    this.state.formHp,
+                    this.state.formEmail,
                   )
                 }>
                 <Text

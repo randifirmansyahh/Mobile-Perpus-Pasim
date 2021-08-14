@@ -3,6 +3,7 @@ import {Text, View, TouchableOpacity, Alert, Image} from 'react-native';
 import Navbar from './../../../containers/organisms/NavBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FloatingButton from '../../../components/molecules/FloatingButton';
+import Header from '../../../components/molecules/Header';
 
 export default class Bantuan extends React.Component {
   constructor(props) {
@@ -22,39 +23,6 @@ export default class Bantuan extends React.Component {
   }
 
   render() {
-    const Header = () => {
-      return (
-        <View
-          style={{
-            backgroundColor: '#540000',
-            flex: 1,
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderBottomRightRadius: 80,
-          }}>
-          <View
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: 50,
-              backgroundColor: 'white',
-              marginLeft: 16,
-            }}>
-            <Image
-              source={require('../../../assets/images/logo/pasim.png')}
-              style={{
-                height: 50,
-                width: 50,
-                position: 'absolute',
-              }}></Image>
-          </View>
-          <Text style={{color: 'white', fontSize: 17, marginLeft: 10}}>
-            Perpustakaan Universitas Nasional PASIM
-          </Text>
-        </View>
-      );
-    };
-
     const SapaNama = () => {
       return (
         <View

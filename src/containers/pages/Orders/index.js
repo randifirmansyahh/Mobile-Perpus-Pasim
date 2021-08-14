@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, Button, TouchableOpacity} from 'react-native';
 import Navbar from './../../../containers/organisms/NavBar';
+import Header from './../../../components/molecules/Header';
 
 const Orders = () => {
   return (
@@ -14,6 +15,7 @@ const Orders = () => {
           // borderTopWidth: 1,
           flex: 1,
         }}>
+        <Header />
         <View
           style={{
             backgroundColor: '#ebebeb',

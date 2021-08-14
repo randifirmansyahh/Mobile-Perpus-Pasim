@@ -6,13 +6,22 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Login extends React.Component {
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
+      isShow: true,
       formNim: '',
       formPass: '',
       nim: '',
@@ -36,6 +45,7 @@ export default class Login extends React.Component {
       } else if (this.state.formPass == '') {
         alert('Masukan Password terlebih dahulu');
       } else {
+        this.setState({isLoading: true});
         await fetch(this.url + '/?op=detail&nim=' + nim)
           .then(response => response.json())
           .then(json => {
@@ -53,11 +63,15 @@ export default class Login extends React.Component {
           .catch(
             (error = () =>
               alert(
-                'NIM tidak terdaftar, Silahkan registrasi terlebih dahulu',
+                'NIM tidak terdaftar, Atau silahkan periksa koneksi jaringan anda.',
               )),
           );
       }
-    } catch (error) {}
+    } catch (error) {
+      // this.setState({isLoading: false});
+    } finally {
+      this.setState({isLoading: false});
+    }
   }
 
   render() {
@@ -203,22 +217,44 @@ export default class Login extends React.Component {
                     width: '70%',
                   }}
                 />
-                <TextInput
-                  style={{
-                    width: '70%',
-                    marginTop: 20,
-                    borderRadius: 10,
-                    paddingLeft: 16,
-                    height: 40,
-                    marginBottom: 2,
-                  }}
-                  secureTextEntry
-                  placeholder="Password"
-                  placeholderTextColor="#a6a6a6"
-                  onChangeText={textPass => {
-                    this.setState({formPass: textPass});
-                  }}
-                />
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <TextInput
+                    style={{
+                      width: '70%',
+                      marginTop: 20,
+                      borderRadius: 10,
+                      paddingLeft: 36,
+                      height: 40,
+                      marginBottom: 2,
+                    }}
+                    secureTextEntry={this.state.isShow == true ? true : false}
+                    placeholder="Password"
+                    placeholderTextColor="#a6a6a6"
+                    onChangeText={textPass => {
+                      this.setState({formPass: textPass});
+                    }}
+                  />
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.state.isShow == true
+                        ? this.setState({isShow: false})
+                        : this.setState({isShow: true})
+                    }>
+                    <Image
+                      source={
+                        this.state.isShow == true
+                          ? require('./../../../assets/images/icon/private.png')
+                          : require('./../../../assets/images/icon/vision.png')
+                      }
+                      style={{
+                        height: 20,
+                        width: 20,
+                        marginRight: 20,
+                        marginTop: 25,
+                      }}
+                    />
+                  </TouchableOpacity>
+                </View>
                 <View
                   style={{
                     backgroundColor: '#540000',
@@ -251,6 +287,16 @@ export default class Login extends React.Component {
               flex: 1,
               borderTopLeftRadius: 80,
             }}>
+            {this.state.isLoading == true ? (
+              <View
+                style={{
+                  alignItems: 'center',
+                  flex: 2,
+                  marginTop: 40,
+                }}>
+                <ActivityIndicator size="large" color="#540000" />
+              </View>
+            ) : null}
             <View style={{alignItems: 'center'}}>
               <TouchableOpacity
                 style={{
@@ -261,9 +307,9 @@ export default class Login extends React.Component {
                   justifyContent: 'center',
                   borderRadius: 10,
                 }}
-                onPress={() =>
-                  this.cekLogin(this.state.formNim, this.state.formPass)
-                }>
+                onPress={() => {
+                  this.cekLogin(this.state.formNim, this.state.formPass);
+                }}>
                 <Text
                   style={{
                     color: 'white',

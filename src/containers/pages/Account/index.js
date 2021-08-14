@@ -10,6 +10,7 @@ import {
 import Navbar from './../../../containers/organisms/NavBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FloatingButton from '../../../components/molecules/FloatingButton';
+import Header from './../../../components/molecules/Header';
 
 export default class Account extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class Account extends React.Component {
 
   logout() {
     AsyncStorage.removeItem('@nim');
+    AsyncStorage.removeItem('@nama');
     this.props.navigation.navigate('Login');
   }
 
@@ -91,41 +93,12 @@ export default class Account extends React.Component {
             flex: 1,
             backgroundColor: 'white',
           }}>
-          <View style={{flex: 1}}>
-            <View
-              style={{
-                width: '100%',
-                flex: 1,
-                // borderBottomRightRadius: 80,
-                // borderBottomLeftRadius: 80,
-                flexDirection: 'row',
-              }}>
-              <Image
-                source={require('../../../assets/images/logo/pasim.png')}
-                style={{
-                  height: 50,
-                  width: 50,
-                  marginLeft: 16,
-                  alignSelf: 'center',
-                }}
-              />
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  marginLeft: 16,
-                  fontWeight: 'bold',
-                  color: 'white',
-                }}>
-                PERPUSTAKAAN UNIVERSITAS NASIONAL PASIM
-              </Text>
-            </View>
-          </View>
+          <Header />
           <View style={{flex: 4}}>
             <View
               style={{
                 height: '90%',
                 width: '100%',
-                flex: 1,
                 borderTopLeftRadius: 80,
                 borderTopRightRadius: 80,
               }}>
@@ -134,7 +107,7 @@ export default class Account extends React.Component {
                   style={{
                     width: '100%',
                     alignItems: 'center',
-                    marginTop: 40,
+                    marginTop: 75,
                     backgroundColor: '#540000',
                     height: 200,
                     borderRadius: 20,
@@ -168,7 +141,7 @@ export default class Account extends React.Component {
               </View>
             </View>
           </View>
-          <View style={{flex: 3}}>
+          <View style={{flex: 2}}>
             <View
               style={{
                 backgroundColor: 'white',
