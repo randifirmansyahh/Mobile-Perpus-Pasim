@@ -132,7 +132,7 @@ android {
 
     defaultConfig {
         missingDimensionStrategy 'react-native-camera', 'mlkit' // <--- insert this line
-        applicationId "com.junedomingo.perpus"
+        applicationId "com.perpus.pasim"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
