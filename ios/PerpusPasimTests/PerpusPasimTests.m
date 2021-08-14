@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface cloneGojekTests : XCTestCase
+@interface PerpusPasimTests : XCTestCase
 
 @end
 
-@implementation cloneGojekTests
+@implementation PerpusPasimTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

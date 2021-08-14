@@ -16,8 +16,10 @@ export default class Daftar extends React.Component {
       formNama: '',
       formPass: '',
     };
+    // hosting
+    this.url = 'https://perpuspasim.000webhostapp.com/ApiAnggota.php';
     // Hotspot Laptop
-    this.url = 'http://192.168.137.1/Mine/Crudphpapi/ApiAnggota.php';
+    // this.url = 'http://192.168.137.1/Mine/Crudphpapi/ApiAnggota.php';
     // Hostpot Hp
     // this.url = 'http://192.168.43.216/Mine/Crudphpapi/ApiAnggota.php';
   }
