@@ -7,20 +7,13 @@ import GarisAbu from './../../../components/atoms/GarisAbu';
 // Molecules
 import SearchFeature from './../../../components/molecules/SearchFeature';
 import GoNews from './../../../components/molecules/GoNews';
-import GoBanner from './../../../components/molecules/GoBanner';
 import GoInfo from './../../../components/molecules/GoInfo';
-import WebPasim from './../../../components/molecules/WebPasim';
-import WebPub from './../../../components/molecules/WebPub';
 import Header from './../../../components/molecules/Header';
 
 // Containers
+import HomePerpus from './../../../containers/organisms/HomePerpus';
 import NavBar from './../../../containers/organisms/NavBar';
-import ScrollableProduct from './../../../containers/organisms/ScrollableProduct';
-import HomeMainFeature from './../../../containers/organisms/HomeMainFeature';
-import HomeGopay from './../../../containers/organisms/HomeGopay';
-
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import ScrollableBooks from './../../../containers/organisms/ScrollableBooks';
 
 // Storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -57,16 +50,33 @@ class Home extends Component {
         <Header />
         <ScrollView style={{flex: 1}}>
           <SearchFeature />
-          <HomeGopay />
-          {/* <HomeMainFeature /> */}
+          <HomePerpus />
           <GarisAbu />
-          <ScrollableProduct />
+          <ScrollableBooks />
           <GarisAbu />
-          <GoNews onPress={() => askSee(perpus)} />
+          <GoNews
+            title="WEB-PERPUS"
+            desc="Kunjungi juga web perpustakaan universitas nasional pasim untuk
+          informasi lebih lanjut."
+            onPress={() => askSee(perpus)}
+            image={require('../../../assets/images/dummy/perpusfoto.jpg')}
+          />
           <GoInfo />
-          {/* <GoBanner /> */}
-          <WebPasim onPress={() => askSee(pasim)} />
-          <WebPub onPress={() => askSee(pub)} />
+          <GoNews
+            title="WEB-PASIM"
+            desc="Kunjungi juga web resmi universitas nasional pasim untuk informasi
+          tentang kampus, pendaftaran dan beasiswa."
+            onPress={() => askSee(pasim)}
+            image={require('../../../assets/images/dummy/webpasim.jpg')}
+          />
+          <GoNews
+            title="WEB-PUB"
+            desc="Kunjungi juga web resmi beasiswa pemberdayaan umat berkelanjutan (PUB)
+          universitas nasional pasim untuk informasi tentang beasiswa, kuliah
+          gratis, syarat dan ketentuan pendaftaran."
+            onPress={() => askSee(pub)}
+            image={require('../../../assets/images/dummy/webpub.jpg')}
+          />
         </ScrollView>
         <NavBar />
       </View>

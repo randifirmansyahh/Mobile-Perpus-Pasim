@@ -1,12 +1,37 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 
-const GoNews = ({onPress}) => {
+function KunjungiWebsite(props) {
+  return (
+    <TouchableOpacity
+      onPress={props.onPress}
+      style={{
+        backgroundColor: '#540000',
+        borderRadius: 4,
+        alignSelf: 'flex-end',
+        marginTop: 16,
+      }}>
+      <Text
+        style={{
+          fontSize: 13,
+          fontWeight: 'bold',
+          color: 'white',
+          paddingHorizontal: 12,
+          paddingVertical: 11,
+          textAlign: 'center',
+        }}>
+        {props.title}
+      </Text>
+    </TouchableOpacity>
+  );
+}
+
+const GoNews = props => {
   return (
     <View style={{paddingTop: 16, paddingHorizontal: 16}}>
       <View>
         <Image
-          source={require('../../../assets/images/dummy/perpusfoto.jpg')}
+          source={props.image}
           style={{height: 170, width: '100%', borderRadius: 8}}
         />
         <View
@@ -40,7 +65,7 @@ const GoNews = ({onPress}) => {
           borderBottomWidth: 1,
         }}>
         <Text style={{fontSize: 16, fontWeight: 'bold', color: '#1c1c1c'}}>
-          WEB-PERPUS
+          {props.title}
         </Text>
         <Text
           style={{
@@ -49,29 +74,9 @@ const GoNews = ({onPress}) => {
             color: '#7a7a7a',
             marginTop: 4,
           }}>
-          Kunjungi juga web perpustakaan universitas nasional pasim untuk
-          informasi lebih lanjut
+          {props.desc}
         </Text>
-        <TouchableOpacity
-          onPress={onPress}
-          style={{
-            backgroundColor: '#540000',
-            borderRadius: 4,
-            alignSelf: 'flex-end',
-            marginTop: 16,
-          }}>
-          <Text
-            style={{
-              fontSize: 13,
-              fontWeight: 'bold',
-              color: 'white',
-              paddingHorizontal: 12,
-              paddingVertical: 11,
-              textAlign: 'center',
-            }}>
-            KUNJUNGI
-          </Text>
-        </TouchableOpacity>
+        <KunjungiWebsite title="Kunjungi" onPress={props.onPress} />
       </View>
     </View>
   );

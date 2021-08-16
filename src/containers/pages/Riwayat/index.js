@@ -3,7 +3,7 @@ import {Text, View, Button, TouchableOpacity} from 'react-native';
 import Navbar from './../../../containers/organisms/NavBar';
 import Header from './../../../components/molecules/Header';
 
-const Orders = () => {
+const Riwayat = () => {
   return (
     <>
       <View
@@ -88,4 +88,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default Riwayat;

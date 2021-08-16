@@ -35,7 +35,7 @@ class NavBar extends Component {
           onPress={() => {
             AsyncStorage.setItem('@ac', 'Riwayat');
             // alert(this.state.ac);
-            this.props.navigation.navigate('Orders');
+            this.props.navigation.navigate('Riwayat');
           }}
           title="Riwayat"
           img={require('./../../../assets/images/icon/his.png')}

@@ -13,7 +13,7 @@ import {
 
 const linkBukuPop = () => {
   Linking.openURL(
-    'whatsapp://send?text=Halo, Saya butuh bantuan !&phone=6285156061121',
+    'mailto:perpuspasim@gmail.com?subject=Bantuan&body=Halo, Saya butuh bantuan !',
   );
 };
 

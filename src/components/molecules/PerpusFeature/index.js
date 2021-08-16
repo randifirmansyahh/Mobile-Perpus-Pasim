@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 
-const GopayFeature = props => {
+const PerpusFeature = props => {
   return (
     <TouchableOpacity
       onPress={props.onPress}
@@ -20,4 +20,4 @@ const GopayFeature = props => {
   );
 };
 
-export default GopayFeature;
+export default PerpusFeature;

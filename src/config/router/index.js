@@ -2,9 +2,7 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {
   Home,
-  NewsDetail,
-  Orders,
-  OrderDetail,
+  Riwayat,
   ScanQRCode,
   Login,
   Daftar,
@@ -18,7 +16,6 @@ import {
 const HomeStack = createStackNavigator(
   {
     Home,
-    NewsDetail,
     ScanQRCode,
     QRAnggota,
     Bantuan,
@@ -64,21 +61,20 @@ const ScanStack = createStackNavigator(
   },
 );
 
-const OrdersStack = createStackNavigator(
+const RiwayatStack = createStackNavigator(
   {
-    Orders,
-    OrderDetail,
+    Riwayat,
   },
   {
     headerMode: 'none',
-    initialRouteName: 'Orders',
+    initialRouteName: 'Riwayat',
   },
 );
 
 const Router = createSwitchNavigator(
   {
     HomeStack,
-    OrdersStack,
+    RiwayatStack,
     ScanStack,
     LoginStack,
     AccountStack,

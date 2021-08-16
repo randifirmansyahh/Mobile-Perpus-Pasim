@@ -6,7 +6,7 @@ const ScrollableItem = props => {
     <View style={{paddingLeft: 16}}>
       <View style={{width: 150, height: 150}}>
         <Image
-          source={props.img}
+          source={{uri: props.img}}
           style={{
             flex: 1,
             height: undefined,

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {View, Image, Text} from 'react-native';
-import GopayFeature from './../../../components/molecules/GopayFeature';
 import {withNavigation} from 'react-navigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import PerpusFeature from './../../../components/molecules/PerpusFeature';
 
-class HomeGopay extends Component {
+class HomePerpus extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,22 +53,22 @@ class HomeGopay extends Component {
             borderBottomRightRadius: 8,
             borderBottomLeftRadius: 8,
           }}>
-          <GopayFeature
+          <PerpusFeature
             onPress={() => this.props.navigation.navigate('QRAnggota')}
             title="Kunjungan"
             img={require('./../../../assets/images/icon/absen.png')}
           />
-          <GopayFeature
+          <PerpusFeature
             onPress={() => this.props.navigation.navigate('ScanQRCode')}
             title="Pinjam Buku"
             img={require('./../../../assets/images/icon/qr-code.png')}
           />
-          <GopayFeature
+          <PerpusFeature
             onPress={() => this.props.navigation.navigate('CariBuku')}
             title="Cari Buku"
             img={require('./../../../assets/images/icon/books.png')}
           />
-          <GopayFeature
+          <PerpusFeature
             onPress={() => this.props.navigation.navigate('Bantuan')}
             title="Bantuan"
             img={require('./../../../assets/images/icon/headphone.png')}
@@ -79,4 +79,4 @@ class HomeGopay extends Component {
   }
 }
 
-export default withNavigation(HomeGopay);
+export default withNavigation(HomePerpus);
