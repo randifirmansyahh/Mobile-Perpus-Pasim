@@ -8,6 +8,7 @@ class QRAnggota extends Component {
     super(props);
     this.state = {
       nim: '',
+      nama: '',
     };
 
     AsyncStorage.getItem('@nim', (error, result) => {
@@ -23,11 +24,25 @@ class QRAnggota extends Component {
         this.props.navigation.navigate('Home');
       }
     });
+
+    AsyncStorage.getItem('@nama', (error, result) => {
+      if (result) {
+        this.setState({
+          nama: result,
+        });
+      } else {
+        alert('nama tidak ditemukan, silahkan untuk Login ulang');
+        this.setState({
+          nama: '',
+        });
+        this.props.navigation.navigate('Home');
+      }
+    });
   }
 
   render() {
     let logoFromFile = require('./../../../assets/images/logo/pasim.png');
-    let url = `http://192.168.137.1/Mine/Crudphpapi/ApiPengunjung.php?nim=${this.state.nim}`;
+    let url = this.state.nim + ',' + this.state.nama;
 
     return (
       <View style={{backgroundColor: 'white', flex: 1}}>
