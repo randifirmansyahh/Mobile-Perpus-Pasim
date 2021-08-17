@@ -73,9 +73,9 @@ const FloatingButton = () => {
       <TouchableOpacity
         onPress={() => askSee()}
         style={{
-          width: 50,
-          height: 50,
-          borderRadius: 50,
+          width: 55,
+          height: 55,
+          borderRadius: 55,
           backgroundColor: 'white',
           justifyContent: 'center',
           alignItems: 'center',

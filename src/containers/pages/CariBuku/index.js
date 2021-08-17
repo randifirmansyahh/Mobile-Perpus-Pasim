@@ -12,6 +12,8 @@ import {
 import SearchFeature from '../../../components/molecules/SearchFeature';
 import Header from '../../../components/molecules/Header';
 import FloatingButton from '../../../components/molecules/FloatingButton';
+import IconLoading from './../../../components/atoms/IconLoading/index';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // https://masak-apa.tomorisakura.vercel.app/api/recipes all
 // https://masak-apa.tomorisakura.vercel.app/api/search/?q= search
@@ -27,22 +29,24 @@ class CariBuku extends Component {
       listData: [],
       idEdit: null,
     };
-    this.url = 'https://masak-apa.tomorisakura.vercel.app/api/';
+
+    // Laptop
+    // this.url = 'http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
+
+    // Hp
+    this.url = 'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
   }
   componentDidMount() {
     this.Semua();
   }
 
   async Semua() {
-    await fetch(this.url + 'recipes')
+    await fetch(this.url)
       .then(response => response.json())
       .then(json => {
-        // alert(json.results[0].title);
-        // console.log('Hasil yang didapat: ' + JSON.stringify(json.results));
-        // console.warn(JSON.stringify(json.results));
-        this.setState({listData: json.results});
+        this.setState({listData: json.data.result});
         this.setState({isLoading: false});
-        !this.state.lisData
+        !this.state.listData
           ? this.setState({tidakada: true})
           : this.setState({tidakada: false});
       })
@@ -53,15 +57,12 @@ class CariBuku extends Component {
   }
 
   async CariBuku(nama) {
-    await fetch(this.url + 'search/?q=' + nama)
+    await fetch(this.url + '?op=search&query=' + nama)
       .then(response => response.json())
       .then(json => {
-        // alert(json.results[0].title);
-        // console.log('Hasil yang didapat: ' + JSON.stringify(json.results));
-        // console.warn(JSON.stringify(json.results));
-        this.setState({listData: json.results});
+        this.setState({listData: json.data.result});
         this.setState({isLoading: false});
-        !this.state.lisData
+        !this.state.listData
           ? this.setState({tidakada: true})
           : this.setState({tidakada: false});
       })
@@ -78,11 +79,9 @@ class CariBuku extends Component {
         <Header />
         <View
           style={{
-            position: 'relative',
-            flex: 1,
             marginTop: 16,
             marginLeft: 16,
-            marginBottom: 50,
+            marginBottom: 10,
           }}>
           <TextInput
             placeholder="Cari buku apa ?"
@@ -115,15 +114,7 @@ class CariBuku extends Component {
             }}
           />
         </View>
-        {this.state.isLoading == true ? (
-          <View
-            style={{
-              alignItems: 'center',
-              flex: 2,
-            }}>
-            <ActivityIndicator size="large" color="#540000" />
-          </View>
-        ) : null}
+        {this.state.isLoading == true ? <IconLoading /> : null}
         {this.state.tidakada == true ? (
           <View
             style={{
@@ -136,23 +127,30 @@ class CariBuku extends Component {
         {!this.state.listData == [] ? (
           <ScrollView>
             {this.state.listData.map((val, index) => (
-              <View
+              <TouchableOpacity
                 key={index}
-                style={{
-                  flexDirection: 'row',
-                  marginHorizontal: 16,
-                  marginVertical: 16,
+                onPress={() => {
+                  AsyncStorage.setItem('@idBuku', val.id);
+                  this.props.navigation.navigate('DetailBuku');
                 }}>
-                <Image
-                  style={{height: 120, width: 120}}
-                  source={{
-                    uri: val.thumb,
-                  }}
-                />
-                <View style={{width: '60%', marginLeft: 16}}>
-                  <Text>{val.title}</Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    marginHorizontal: 16,
+                    marginVertical: 16,
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    style={{height: 120, width: 120}}
+                    source={{
+                      uri: val.foto,
+                    }}
+                  />
+                  <View style={{width: '60%', marginLeft: 16}}>
+                    <Text>{val.judul}</Text>
+                  </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
           </ScrollView>
         ) : null}

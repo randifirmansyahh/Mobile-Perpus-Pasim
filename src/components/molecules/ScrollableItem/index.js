@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 
 const ScrollableItem = props => {
   return (
-    <View style={{paddingLeft: 16}}>
+    <TouchableOpacity onPress={props.onPress} style={{paddingLeft: 16}}>
       <View style={{width: 150, height: 150}}>
         <Image
           source={{uri: props.img}}
@@ -20,7 +20,7 @@ const ScrollableItem = props => {
       <View style={{width: 150}}>
         <Text style={{marginTop: 12}}>{props.title}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

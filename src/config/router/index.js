@@ -11,6 +11,8 @@ import {
   Bantuan,
   QRAnggota,
   CariBuku,
+  DetailBuku,
+  QRPinjam,
 } from './../../containers/pages';
 
 const HomeStack = createStackNavigator(
@@ -20,6 +22,8 @@ const HomeStack = createStackNavigator(
     QRAnggota,
     Bantuan,
     CariBuku,
+    DetailBuku,
+    QRPinjam,
   },
   {
     headerMode: 'none',

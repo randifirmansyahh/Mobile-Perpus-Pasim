@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ScrollableItem from './../../../components/molecules/ScrollableItem';
 import {withNavigation} from 'react-navigation';
 import IconLoading from './../../../components/atoms/IconLoading';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   View,
   Image,
@@ -25,24 +26,6 @@ import {
 //     </View>
 //   );
 // }
-
-function TampilSemuaBuku(props) {
-  return (
-    <ScrollView
-      horizontal={true}
-      style={{
-        flexDirection: 'row',
-      }}>
-      {props.listData.map((val, index) => (
-        <ScrollableItem
-          key={index}
-          title={val.title.substring(0, 35) + '...'}
-          img={val.thumb}
-        />
-      ))}
-    </ScrollView>
-  );
-}
 
 function GagalMemuat(props) {
   return (
@@ -128,19 +111,45 @@ function IconBukuTerbaru() {
   );
 }
 
+function TampilSemuaBuku(props) {
+  return (
+    <ScrollView
+      horizontal={true}
+      style={{
+        flexDirection: 'row',
+      }}>
+      {props.listData.map((val, index) => (
+        <ScrollableItem
+          onPress={() => {
+            AsyncStorage.setItem('@idBuku', val.id);
+            props.navigate('DetailBuku');
+          }}
+          key={index}
+          title={val.judul.substring(0, 35) + '...'}
+          img={val.foto}
+        />
+      ))}
+    </ScrollView>
+  );
+}
+
 class ScrollableBooks extends Component {
   constructor(props) {
     super(props);
     this.state = {
       nama: '',
+      idBuku: '',
       isLoading: true,
       tidakada: false,
       listData: [],
     };
-    this.url = 'https://masak-apa.tomorisakura.vercel.app/api/';
+    // this.url = 'https://masak-apa.tomorisakura.vercel.app/api/';
 
     // laptop
-    // this.url = http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php
+    // this.url = 'http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
+
+    // hp
+    this.url = 'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
   }
 
   componentWillUnmount() {
@@ -155,10 +164,10 @@ class ScrollableBooks extends Component {
   }
 
   async Semua() {
-    await fetch(this.url + 'recipes')
+    await fetch(this.url)
       .then(response => response.json())
       .then(json => {
-        this.setState({listData: json.results});
+        this.setState({listData: json.data.result});
         this.setState({isLoading: false});
         !this.state.listData
           ? this.setState({tidakada: true})
@@ -185,7 +194,10 @@ class ScrollableBooks extends Component {
           <GagalMemuat navigate={this.props.navigation.navigate} />
         ) : null}
         {this.state.isLoading == true ? <IconLoading /> : null}
-        <TampilSemuaBuku listData={this.state.listData} />
+        <TampilSemuaBuku
+          navigate={this.props.navigation.navigate}
+          listData={this.state.listData}
+        />
       </View>
     );
   }

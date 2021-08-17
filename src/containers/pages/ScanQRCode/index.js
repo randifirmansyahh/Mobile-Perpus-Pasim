@@ -79,6 +79,7 @@ class ScanQRCode extends PureComponent {
   }
   state = {
     barcode: '',
+    id: '',
   };
   render() {
     return (
@@ -125,10 +126,13 @@ class ScanQRCode extends PureComponent {
               buttonNegative: 'Tidak',
             }}
             onBarCodeRead={bar => {
-              console.log(bar);
+              AsyncStorage.setItem('@idBuku', bar.data);
               this.setState({
                 barcode: bar.data,
               });
+              if (this.state.barcode != '') {
+                this.props.navigation.navigate('DetailBuku');
+              }
             }}
           />
           {/* End Camera */}
