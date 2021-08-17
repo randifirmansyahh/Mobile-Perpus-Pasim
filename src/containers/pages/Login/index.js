@@ -30,6 +30,8 @@ export default class Login extends React.Component {
     };
     // hosting
     this.url = 'https://perpuspasim.000webhostapp.com/ApiAnggota.php';
+    // efizy
+    // this.url = 'http://perpuspasim.rf.gd/ApiAnggota.php';
     // Hotspot Laptop
     // this.url = 'http://192.168.137.1/Mine/Crudphpapi/ApiAnggota.php';
     // Hostpot Hp

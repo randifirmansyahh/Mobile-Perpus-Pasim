@@ -138,6 +138,9 @@ class ScrollableBooks extends Component {
       listData: [],
     };
     this.url = 'https://masak-apa.tomorisakura.vercel.app/api/';
+
+    // laptop
+    // this.url = http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php
   }
 
   componentWillUnmount() {
