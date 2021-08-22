@@ -1,4 +1,5 @@
 import React from 'react';
+import AskSee from './../../atoms/AskSee';
 import {
   View,
   Image,
@@ -8,21 +9,7 @@ import {
   Alert,
 } from 'react-native';
 
-const link = () => {
-  Linking.openURL('https://e-resources.perpusnas.go.id/');
-};
-
-const askSee = () => {
-  Alert.alert('Daftar', 'Ingin mendaftar ke perpustakaan Nasional ?', [
-    {
-      text: 'Tidak',
-    },
-    {
-      text: 'Ya',
-      onPress: () => link(),
-    },
-  ]);
-};
+const PerpusNasional = 'https://e-resources.perpusnas.go.id/';
 
 const GoInfo = () => {
   return (
@@ -72,7 +59,7 @@ const GoInfo = () => {
           </View>
         </View>
         <TouchableOpacity
-          onPress={() => askSee()}
+          onPress={() => AskSee(PerpusNasional)}
           style={{
             backgroundColor: '#540000',
             borderRadius: 4,

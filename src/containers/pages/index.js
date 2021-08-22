@@ -10,6 +10,7 @@ import CariBuku from './CariBuku';
 import Riwayat from './Riwayat';
 import DetailBuku from './DetailBuku';
 import QRPinjam from './QRPinjam';
+import SplashScreen from './SplashScreen';
 
 export {
   Auth,
@@ -24,4 +25,5 @@ export {
   CariBuku,
   DetailBuku,
   QRPinjam,
+  SplashScreen,
 };

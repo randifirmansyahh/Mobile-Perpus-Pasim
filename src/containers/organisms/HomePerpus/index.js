@@ -65,7 +65,7 @@ class HomePerpus extends Component {
           />
           <PerpusFeature
             onPress={() => this.props.navigation.navigate('CariBuku')}
-            title="Cari Buku"
+            title="Semua Buku"
             img={require('./../../../assets/images/icon/books.png')}
           />
           <PerpusFeature

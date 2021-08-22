@@ -13,6 +13,7 @@ import {
   CariBuku,
   DetailBuku,
   QRPinjam,
+  SplashScreen,
 } from './../../containers/pages';
 
 const HomeStack = createStackNavigator(
@@ -33,6 +34,7 @@ const HomeStack = createStackNavigator(
 
 const LoginStack = createSwitchNavigator(
   {
+    SplashScreen,
     Auth,
     Login,
     Daftar,
@@ -40,7 +42,7 @@ const LoginStack = createSwitchNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'Auth',
+    initialRouteName: 'SplashScreen',
   },
 );
 
