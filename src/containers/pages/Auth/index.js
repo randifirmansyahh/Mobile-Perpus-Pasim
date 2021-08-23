@@ -10,7 +10,7 @@ export default class Auth extends Component {
         if (value !== null) {
           this.props.navigation.navigate('Home');
         } else {
-          this.props.navigation.navigate('Login');
+          this.props.navigation.navigate('Intro');
         }
       } catch (e) {
         alert('Server sibuk');

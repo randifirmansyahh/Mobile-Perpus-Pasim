@@ -14,6 +14,7 @@ import {
   DetailBuku,
   QRPinjam,
   SplashScreen,
+  Intro,
 } from './../../containers/pages';
 
 const HomeStack = createStackNavigator(
@@ -35,6 +36,7 @@ const HomeStack = createStackNavigator(
 const LoginStack = createSwitchNavigator(
   {
     SplashScreen,
+    Intro,
     Auth,
     Login,
     Daftar,

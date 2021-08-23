@@ -11,6 +11,7 @@ import Riwayat from './Riwayat';
 import DetailBuku from './DetailBuku';
 import QRPinjam from './QRPinjam';
 import SplashScreen from './SplashScreen';
+import Intro from './Intro';
 
 export {
   Auth,
@@ -26,4 +27,5 @@ export {
   DetailBuku,
   QRPinjam,
   SplashScreen,
+  Intro,
 };
