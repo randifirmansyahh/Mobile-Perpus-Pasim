@@ -6,6 +6,7 @@ const IconLoading = () => {
     <View
       style={{
         alignItems: 'center',
+        justifyContent: 'center',
         flex: 2,
         marginVertical: 80,
       }}>

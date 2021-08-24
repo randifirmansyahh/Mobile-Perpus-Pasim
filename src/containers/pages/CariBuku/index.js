@@ -34,7 +34,10 @@ class CariBuku extends Component {
     // this.url = 'http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
 
     // Hp
-    this.url = 'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
+    // this.url = 'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
+
+    //hosting webhost
+    this.url = 'https://perpuspasim.000webhostapp.com/ApiBuku.php';
   }
   componentDidMount() {
     this.Semua();

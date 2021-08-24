@@ -26,8 +26,12 @@ export default class DetailBuku extends Component {
     //   'http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php?op=detail&query=';
 
     // Hp
+    // this.url =
+    //   'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php?op=detail&query=';
+
+    // hosting webhost
     this.url =
-      'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php?op=detail&query=';
+      'https://perpuspasim.000webhostapp.com/ApiBuku.php?op=detail&query=';
   }
 
   componentDidMount() {
@@ -113,7 +117,7 @@ export default class DetailBuku extends Component {
         justifyContent: 'center',
         height: 50,
         backgroundColor: '#1C2938',
-        marginBottom: 200,
+        marginBottom: 100,
         marginTop: doubleSpace,
         borderRadius: 10,
       },
@@ -179,7 +183,7 @@ export default class DetailBuku extends Component {
 
     const Main = () => {
       return (
-        <View>
+        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
           {this.state.isLoading == true ? <IconLoading /> : <Tampil />}
         </View>
       );

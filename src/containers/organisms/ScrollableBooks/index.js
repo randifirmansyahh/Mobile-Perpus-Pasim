@@ -116,6 +116,7 @@ function TampilSemuaBuku(props) {
           img={val.foto}
         />
       ))}
+      <View style={{width: 16}} />
     </ScrollView>
   );
 }
@@ -136,7 +137,10 @@ class ScrollableBooks extends Component {
     // this.url = 'http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
 
     // hp
-    this.url = 'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
+    // this.url = 'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
+
+    // hoting webhost
+    this.url = 'https://perpuspasim.000webhostapp.com/ApiBuku.php';
   }
 
   componentWillUnmount() {
