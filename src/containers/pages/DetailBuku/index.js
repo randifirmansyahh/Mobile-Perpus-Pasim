@@ -139,7 +139,7 @@ export default class DetailBuku extends Component {
 
     const Tampil = () => {
       return (
-        <View style={{backgroundColor: 'white'}}>
+        <View style={{backgroundColor: 'white', flex: 1, width: '100%'}}>
           <Header />
           <ScrollView style={styles.scroll}>
             <View style={styles.container}>

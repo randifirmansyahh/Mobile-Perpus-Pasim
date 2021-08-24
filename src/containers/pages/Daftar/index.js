@@ -272,7 +272,6 @@ export default class Daftar extends React.Component {
                     borderRadius: 10,
                     paddingLeft: 16,
                   }}
-                  secureTextEntry
                   placeholder="Email"
                   placeholderTextColor="#a6a6a6"
                   onChangeText={textEmail => {

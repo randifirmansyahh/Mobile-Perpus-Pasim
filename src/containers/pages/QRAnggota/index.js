@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ActivityIndicator, Text, Image} from 'react-native';
+import {View, ActivityIndicator, Text, Image, ScrollView} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -77,9 +77,6 @@ class QRAnggota extends Component {
             backgroundColor: 'white',
             flex: 1,
           }}>
-          {/* <Text style={{fontSize: 20, fontWeight: 'bold', marginBottom: 20}}>
-          {this.state.nim}
-        </Text> */}
           <Text
             style={{
               fontSize: 20,
@@ -88,27 +85,13 @@ class QRAnggota extends Component {
             }}>
             Yuk isi daftar kunjungan perpustakaan !
           </Text>
-          <View
-            style={{
-              paddingVertical: 5,
-              paddingHorizontal: 5,
-              backgroundColor: 'black',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-            }}>
-            {/* 2. QRCode Canvas  */}
-            <QRCode
-              value={url}
-              //   logo={logoFromFile}
-              quietZone={5}
-              size={300}
-              //   logoSize={300}
-              enableLinearGradient={true}
-              linearGradient={['red', 'black']}
-              // logoMargin={50}
-            />
-          </View>
+          <QRCode
+            value={url}
+            quietZone={5}
+            size={300}
+            enableLinearGradient={true}
+            linearGradient={['red', 'black']}
+          />
         </View>
         <View
           style={{
@@ -132,8 +115,9 @@ class QRAnggota extends Component {
             backgroundColor: '#ededed',
             height: 5,
             width: '100%',
-          }}></View>
-        <View style={{flex: 1, backgroundColor: 'white'}}>
+          }}
+        />
+        <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
           <View
             style={{flexDirection: 'column', marginLeft: 32, marginTop: 16}}>
             <View
@@ -166,7 +150,7 @@ class QRAnggota extends Component {
               </Text>
             </View>
           </View>
-        </View>
+        </ScrollView>
       </View>
     );
   }

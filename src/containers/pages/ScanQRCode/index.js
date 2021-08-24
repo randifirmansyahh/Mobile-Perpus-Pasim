@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Image,
+  ScrollView,
 } from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {createAppContainer} from 'react-navigation';
@@ -36,7 +37,6 @@ const IconAction = ({onPress}) => {
       <TouchableOpacity
         onPress={onPress}
         style={{
-          marginTop: 310,
           width: 40,
           height: 40,
           backgroundColor: 'white',
@@ -84,29 +84,7 @@ class ScanQRCode extends PureComponent {
   render() {
     return (
       <View style={{flex: 1}}>
-        <View
-          style={{
-            height: 70,
-            backgroundColor: '#540000',
-            borderBottomRightRadius: 80,
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginBottom: 90,
-          }}>
-          <Image
-            source={require('./../../../assets/images/logo/pasim.png')}
-            style={{
-              height: 50,
-              width: 50,
-              marginLeft: 16,
-              borderRadius: 50,
-              backgroundColor: 'white',
-            }}
-          />
-          <Text style={{color: 'white', fontSize: 17, marginLeft: 10}}>
-            Perpustakaan Universitas Nasional PASIM
-          </Text>
-        </View>
+        {/* <Header /> */}
         <View style={{flex: 1, backgroundColor: 'gray'}}>
           {/* Start Camera */}
           <RNCamera
@@ -210,8 +188,9 @@ class ScanQRCode extends PureComponent {
               backgroundColor: '#ededed',
               height: 5,
               width: '100%',
-            }}></View>
-          <View style={{flex: 1, backgroundColor: 'white'}}>
+            }}
+          />
+          <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
             <View
               style={{flexDirection: 'column', marginLeft: 32, marginTop: 16}}>
               <View
@@ -262,7 +241,7 @@ class ScanQRCode extends PureComponent {
                 </Text>
               </View>
             </View>
-          </View>
+          </ScrollView>
         </View>
       </View>
     );
