@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {View, ActivityIndicator, Text, Image, ScrollView} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Header from './../../../components/molecules/Header';
+import GarisAbu from './../../../components/atoms/GarisAbu/index';
 
 class QRAnggota extends Component {
   constructor(props) {
@@ -41,33 +43,11 @@ class QRAnggota extends Component {
   }
 
   render() {
-    let logoFromFile = require('./../../../assets/images/logo/pasim.png');
     let url = this.state.nim + ',' + this.state.nama;
 
     return (
       <View style={{backgroundColor: 'white', flex: 1}}>
-        <View
-          style={{
-            height: 70,
-            backgroundColor: '#540000',
-            borderBottomRightRadius: 80,
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}>
-          <Image
-            source={require('./../../../assets/images/logo/pasim.png')}
-            style={{
-              height: 50,
-              width: 50,
-              borderRadius: 50,
-              backgroundColor: 'white',
-              marginLeft: 16,
-            }}
-          />
-          <Text style={{color: 'white', fontSize: 17, marginLeft: 10}}>
-            Perpustakaan Universitas Nasional PASIM
-          </Text>
-        </View>
+        <Header />
         <View
           style={{
             alignItems: 'center',
@@ -93,12 +73,7 @@ class QRAnggota extends Component {
             linearGradient={['red', 'black']}
           />
         </View>
-        <View
-          style={{
-            backgroundColor: '#ededed',
-            height: 5,
-            width: '100%',
-          }}></View>
+        <GarisAbu />
         <View style={{marginVertical: 8, backgroundColor: 'white'}}>
           <Text
             style={{
@@ -110,13 +85,7 @@ class QRAnggota extends Component {
             Bagaimana caranya ?
           </Text>
         </View>
-        <View
-          style={{
-            backgroundColor: '#ededed',
-            height: 5,
-            width: '100%',
-          }}
-        />
+        <GarisAbu />
         <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
           <View
             style={{flexDirection: 'column', marginLeft: 32, marginTop: 16}}>
@@ -157,111 +126,3 @@ class QRAnggota extends Component {
 }
 
 export default QRAnggota;
-
-//
-//
-//
-// BERATTTTT
-//
-//
-//
-//
-
-// import React, {Component} from 'react';
-// import {View, Image, Text, ActivityIndicator} from 'react-native';
-// import canvas from 'react-native-canvas';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// // 1. Import
-// import {QRCode, Canvas} from 'easyqrcode-react-native';
-
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       nim: '',
-//     };
-
-//     try {
-//       AsyncStorage.getItem('@nim', (error, result) => {
-//         if (result) {
-//           this.setState({
-//             nim: result,
-//           });
-//         }
-//       });
-//     } catch (error) {
-//       alert('NIM tidak ditemukan, silahkan untuk Login ulang');
-//     }
-//   }
-//   // 3. Generate QRCode
-//   generateQRCode = canvas => {
-//     var isLoading = 'true';
-//     var url = `http://192.168.137.1/Mine/Crudphpapi/ApiPengunjung.php?nim=${this.state.nim}`;
-//     try {
-//       if (canvas !== null) {
-//         const logoImage = Image.resolveAssetSource(
-//           require('./../../../assets/images/logo/pasim.png'),
-//         ).uri;
-//         // QRCode options
-//         var options = {
-//           text: url,
-//           logo: logoImage,
-//           quietZone: 5,
-//           quietZoneColor: 'white',
-//         };
-//         // Create QRCode Object
-//         var qrcode = new QRCode(canvas, options);
-//         isLoading = 'false';
-
-//         //   var qrCode = new QRCode(canvas, options);
-//       }
-//     } catch (error) {
-//       alert('Tolong periksa jaringan anda');
-//       this.navigation.navigate('Home');
-//     }
-//   };
-
-//   render() {
-//     return (
-//       <View
-//         style={{
-//           alignItems: 'center',
-//           height: '100%',
-//           width: '100%',
-//           paddingVertical: '20%',
-//           backgroundColor: 'white',
-//         }}>
-//         <View
-//           style={{
-//             paddingVertical: 5,
-//             paddingHorizontal: 5,
-//             backgroundColor: 'black',
-//             alignItems: 'center',
-//             justifyContent: 'center',
-//             flexDirection: 'column',
-//           }}>
-//           <View
-//             style={{
-//               paddingVertical: 5,
-//               paddingHorizontal: 5,
-//               backgroundColor: 'white',
-//               alignItems: 'center',
-//               justifyContent: 'center',
-//               flexDirection: 'column',
-//             }}>
-//             <ActivityIndicator
-//               style={{position: 'absolute'}}
-//               size="large"
-//               color="#00ff00"
-//             />
-//             {/* 2. QRCode Canvas  */}
-//             <Canvas ref={this.generateQRCode} />
-//           </View>
-//         </View>
-//       </View>
-//     );
-//   }
-// }
-
-// export default App;

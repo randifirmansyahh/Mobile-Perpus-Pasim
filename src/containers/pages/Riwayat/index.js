@@ -82,6 +82,14 @@ const Riwayat = () => {
             </Text>
           </TouchableOpacity>
         </View>
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 16,
+          }}>
+          <Text>Belum ada data peminjaman</Text>
+        </View>
       </View>
       <Navbar />
     </>

@@ -28,7 +28,7 @@ const Header = () => {
             position: 'absolute',
           }}></Image>
       </View>
-      <Text style={{color: 'white', fontSize: 17, marginLeft: 10}}>
+      <Text style={{color: 'white', fontSize: 16, marginLeft: 10}}>
         Perpustakaan Universitas Nasional PASIM
       </Text>
     </View>

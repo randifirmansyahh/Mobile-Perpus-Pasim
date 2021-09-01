@@ -21,7 +21,6 @@ class Notifikasi {
       onAction: function (notification) {
         console.log('ACTION:', notification.action);
         console.log('NOTIFICATION:', notification);
-
         // process the action
       },
 
@@ -58,7 +57,7 @@ class Notifikasi {
         channelId: channel, // (required)
         channelName: 'My channel', // (required)
         channelDescription: 'A channel to categorise your notifications', // (optional) default: undefined.
-        soundName: 'default', // (optional) See `soundName` parameter of `localNotification` function
+        soundName: 'my_sound', // (optional) See `soundName` parameter of `localNotification` function
         vibrate: true, // (optional) default: true. Creates the default vibration pattern if true.
       },
       created => console.log(`createChannel returned '${created}'`), // (optional) callback returns whether the channel was created, false means it already existed.
@@ -71,7 +70,7 @@ class Notifikasi {
       title: judul,
       message: pesan,
       subText: 'Pemimjaman Buku',
-      soundName: 'default',
+      soundName: 'my_sound',
       actions: ['Baik'],
     });
   };
@@ -85,7 +84,7 @@ class Notifikasi {
       message: pesan, // (required)
       date: new Date(Date.now() + lamanya), // in 60 secs
       subText: 'Pemimjaman Buku',
-      soundName: 'default',
+      soundName: 'my_sound',
       actions: ['Baik'],
       /* Android Only Properties */
       repeatTime: 1, // (optional) Increment of configured repeatType. Check 'Repeating Notifications' section for more info.

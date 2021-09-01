@@ -148,7 +148,7 @@ export default class Login extends React.Component {
           flex: 1,
           backgroundColor: 'white',
         }}>
-        <View style={{backgroundColor: '#540000', flex: 0.4}}>
+        <View style={{backgroundColor: '#540000', height: 90}}>
           <View
             style={{
               backgroundColor: 'white',
@@ -168,7 +168,12 @@ export default class Login extends React.Component {
               }}
             />
             <Text
-              style={{alignSelf: 'center', marginLeft: 16, fontWeight: 'bold'}}>
+              style={{
+                alignSelf: 'center',
+                marginLeft: 16,
+                fontWeight: 'bold',
+                fontSize: 14,
+              }}>
               PERPUSTAKAAN UNIVERSITAS NASIONAL PASIM
             </Text>
           </View>
@@ -203,6 +208,7 @@ export default class Login extends React.Component {
                     borderRadius: 10,
                     paddingLeft: 16,
                     height: 40,
+                    color: 'black',
                   }}
                   // autoFocus={true}
                   placeholder="NIM"
@@ -228,6 +234,7 @@ export default class Login extends React.Component {
                       paddingLeft: 36,
                       height: 40,
                       marginBottom: 2,
+                      color: 'black',
                     }}
                     secureTextEntry={this.state.isShow == true ? true : false}
                     placeholder="Password"

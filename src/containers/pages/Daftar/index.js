@@ -155,7 +155,7 @@ export default class Daftar extends React.Component {
           flex: 1,
           backgroundColor: 'white',
         }}>
-        <View style={{backgroundColor: '#540000', flex: 0.4}}>
+        <View style={{backgroundColor: '#540000', height: 90}}>
           <View
             style={{
               backgroundColor: 'white',
@@ -175,7 +175,12 @@ export default class Daftar extends React.Component {
               }}
             />
             <Text
-              style={{alignSelf: 'center', marginLeft: 16, fontWeight: 'bold'}}>
+              style={{
+                alignSelf: 'center',
+                marginLeft: 16,
+                fontWeight: 'bold',
+                fontSize: 14,
+              }}>
               PERPUSTAKAAN UNIVERSITAS NASIONAL PASIM
             </Text>
           </View>
@@ -198,6 +203,7 @@ export default class Daftar extends React.Component {
                 style={{width: '100%', alignItems: 'center', marginTop: 40}}>
                 <TextInput
                   style={{
+                    color: 'black',
                     backgroundColor: 'white',
                     width: '70%',
                     marginTop: 16,
@@ -213,6 +219,7 @@ export default class Daftar extends React.Component {
                 />
                 <TextInput
                   style={{
+                    color: 'black',
                     backgroundColor: 'white',
                     width: '70%',
                     marginTop: 20,
@@ -227,6 +234,7 @@ export default class Daftar extends React.Component {
                 />
                 <TextInput
                   style={{
+                    color: 'black',
                     backgroundColor: 'white',
                     width: '70%',
                     marginTop: 20,
@@ -252,6 +260,7 @@ export default class Daftar extends React.Component {
                   <Text>+62</Text>
                   <TextInput
                     style={{
+                      color: 'black',
                       backgroundColor: 'white',
                       width: '70%',
                       borderRadius: 10,
@@ -266,6 +275,7 @@ export default class Daftar extends React.Component {
                 </View>
                 <TextInput
                   style={{
+                    color: 'black',
                     backgroundColor: 'white',
                     width: '70%',
                     marginTop: 20,

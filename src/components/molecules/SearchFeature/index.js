@@ -50,6 +50,7 @@ class SearchFeature extends Component {
                 paddingLeft: 45,
                 paddingRight: 20,
                 marginRight: 17,
+                color: 'black',
               }}
             />
             <Image
