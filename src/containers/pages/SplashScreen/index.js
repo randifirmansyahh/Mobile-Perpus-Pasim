@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
+import normalize from 'react-native-normalize';
 
-// * Clean !!
+//TODO Splash sudah normalize
 
 export default class SplashScreen extends Component {
   render() {
@@ -29,23 +30,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+    backgroundColor: 'white',
   },
   logo: {
-    height: 80,
-    width: 80,
-    marginBottom: 20,
+    height: normalize(80),
+    width: normalize(80),
+    marginBottom: normalize(20),
   },
   text1: {
-    fontSize: 20,
+    fontSize: normalize(20),
     fontWeight: 'bold',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text2: {
-    fontSize: 20,
+    fontSize: normalize(20),
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: normalize(20),
   },
   row: {
     flexDirection: 'row',
