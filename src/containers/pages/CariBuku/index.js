@@ -88,6 +88,7 @@ class CariBuku extends Component {
           }}>
           <TextInput
             placeholder="Cari buku apa ?"
+            color="black"
             autoFocus={true}
             onChangeText={q => {
               this.setState({isLoading: true});
