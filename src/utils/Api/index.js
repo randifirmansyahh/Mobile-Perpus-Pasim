@@ -1,8 +1,5 @@
-const Api = () => {
-  const HotspotHp = 'http://192.168.43.216/';
-  const HotspotLaptop = 'http://192.168.137.1/';
+const hotspotHp = 'http://192.168.43.216/';
+const hotspotLaptop = 'http://192.168.137.1/';
+const host = 'https://perpuspasim.000webhostapp.com/';
 
-  return HotspotLaptop;
-};
-
-export default Api;
+export default {host};

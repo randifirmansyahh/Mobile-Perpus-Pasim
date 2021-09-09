@@ -7,7 +7,7 @@ import normalize from 'react-native-normalize';
 export default class SplashScreen extends Component {
   render() {
     // Loading Splash
-    setTimeout(() => this.props.navigation.navigate('Auth'), 10000);
+    setTimeout(() => this.props.navigation.navigate('Auth'), 3000);
 
     // Rute logo
     const rute = './../../../assets/images/logo/';

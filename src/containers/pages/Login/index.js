@@ -1,4 +1,9 @@
 import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Api from '../../../utils/Api/index';
+import Header from './../../../components/molecules/Header';
+import Footer from './../../../components/atoms/Footer';
+import normalize from 'react-native-normalize';
 import {
   TextInput,
   View,
@@ -7,8 +12,10 @@ import {
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
+  ScrollView,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const warna = '#540000';
 
 export default class Login extends React.Component {
   componentWillUnmount() {
@@ -28,14 +35,7 @@ export default class Login extends React.Component {
       nama: '',
       password: '',
     };
-    // hosting
-    this.url = 'https://perpuspasim.000webhostapp.com/ApiAnggota.php';
-    // efizy
-    // this.url = 'http://perpuspasim.rf.gd/ApiAnggota.php';
-    // Hotspot Laptop
-    // this.url = 'http://192.168.137.1/Mine/Crudphpapi/ApiAnggota.php';
-    // Hostpot Hp
-    // this.url = 'http://192.168.43.216/Mine/Crudphpapi/ApiAnggota.php';
+    this.url = Api.host + 'ApiAnggota.php';
   }
 
   async cekLogin(nim, pass) {
@@ -62,12 +62,7 @@ export default class Login extends React.Component {
               alert('Password salah');
             }
           })
-          .catch(
-            (error = () =>
-              alert(
-                'NIM tidak terdaftar, Atau silahkan periksa koneksi jaringan anda.',
-              )),
-          );
+          .catch((error = () => alert('NIM tidak terdaftar.')));
       }
     } catch (error) {
       // this.setState({isLoading: false});
@@ -77,342 +72,168 @@ export default class Login extends React.Component {
   }
 
   render() {
-    // const Loading = () => {
-    //   return (
-    //     <View style={{flex: 1, justifyContent: 'center'}}>
-    //       <ActivityIndicator />
-    //     </View>
-    //   );
-    // };
-
-    // <View style={styles.container}>
-    //       <View style={{}}>
-    //         <Image
-    //           source={require('../../../assets/images/logo/pasim.png')}
-    //           style={styles.logo}
-    //         />
-    //       </View>
-    //       <View style={{alignItems: 'center'}}>
-    //         <View style={{marginBottom: 20}}>
-    //           <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-    //             Silahkan Masuk
-    //           </Text>
-    //         </View>
-    //         <View style={styles.backgroundInput}>
-    //           <View style={styles.inputView}>
-    //             <TextInput
-    //               style={styles.inputText}
-    //               placeholder="NIM"
-    //               placeholderTextColor="#a6a6a6"
-    //               onChangeText={textNim => {
-    //                 this.setState({formNim: textNim});
-    //               }}
-    //               keyboardType="numeric"
-    //             />
-    //           </View>
-    //           <View style={styles.inputView}>
-    //             <TextInput
-    //               style={styles.inputText}
-    //               secureTextEntry
-    //               placeholder="Password"
-    //               placeholderTextColor="#a6a6a6"
-    //               onChangeText={textPass => {
-    //                 this.setState({formPass: textPass});
-    //               }}
-    //             />
-    //           </View>
-    //         </View>
-    //         <TouchableOpacity
-    //           onPress={() => alert('Silahkan hubungi petugas perpustakaan')}>
-    //           <Text style={styles.forgot}>Lupa password ?</Text>
-    //         </TouchableOpacity>
-    //         <TouchableOpacity
-    //           style={styles.loginBtn}
-    //           onPress={() =>
-    //             this.cekLogin(this.state.formNim, this.state.formPass)
-    //           }>
-    //           <Text style={{color: 'white', fontWeight: 'bold'}}> MASUK </Text>
-    //         </TouchableOpacity>
-    //         <Text style={{marginVertical: 12}}>Belum punya akun ?</Text>
-    //         <TouchableOpacity
-    //           onPress={() => this.props.navigation.navigate('Daftar')}>
-    //           <Text style={{color: 'blue'}}> Daftar </Text>
-    //         </TouchableOpacity>
-    //       </View>
-
     return (
-      <View
-        style={{
-          height: '100%',
-          width: '100%',
-          flex: 1,
-          backgroundColor: 'white',
-        }}>
-        <View style={{backgroundColor: '#540000', height: 90}}>
-          <View
-            style={{
-              backgroundColor: 'white',
-              width: '100%',
-              flex: 1,
-              borderBottomRightRadius: 80,
-              flexDirection: 'row',
-              paddingVertical: 35,
-            }}>
-            <Image
-              source={require('../../../assets/images/logo/pasim.png')}
-              style={{
-                height: 50,
-                width: 50,
-                marginLeft: 16,
-                alignSelf: 'center',
+      <View style={styles.main}>
+        <Header />
+        <ScrollView style={styles.container}>
+          <Text style={styles.textPerintah}>SILAHKAN MASUK</Text>
+          <View style={styles.form}>
+            <TextInput
+              style={styles.textInputNim}
+              placeholder="NIM"
+              placeholderTextColor="#a6a6a6"
+              onChangeText={textNim => {
+                this.setState({formNim: textNim});
               }}
+              keyboardType="numeric"
             />
-            <Text
-              style={{
-                alignSelf: 'center',
-                marginLeft: 16,
-                fontWeight: 'bold',
-                fontSize: 14,
-              }}>
-              PERPUSTAKAAN UNIVERSITAS NASIONAL PASIM
-            </Text>
-          </View>
-        </View>
-        <View style={{backgroundColor: 'white', height: 550}}>
-          <View
-            style={{
-              backgroundColor: '#540000',
-              height: '90%',
-              width: '100%',
-              flex: 1,
-              borderBottomRightRadius: 80,
-              borderTopLeftRadius: 80,
-            }}>
-            <View style={{alignItems: 'center', marginVertical: 100}}>
-              <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>
-                SILAHKAN MASUK
-              </Text>
-              <View
-                style={{
-                  width: '90%',
-                  alignItems: 'center',
-                  marginTop: 40,
-                  backgroundColor: 'white',
-                  borderRadius: 20,
-                }}>
-                <TextInput
-                  style={{
-                    backgroundColor: 'white',
-                    width: '70%',
-                    marginTop: 60,
-                    borderRadius: 10,
-                    paddingLeft: 16,
-                    height: 40,
-                    color: 'black',
-                  }}
-                  // autoFocus={true}
-                  placeholder="NIM"
-                  placeholderTextColor="#a6a6a6"
-                  onChangeText={textNim => {
-                    this.setState({formNim: textNim});
-                  }}
-                  keyboardType="numeric"
-                />
-                <View
-                  style={{
-                    backgroundColor: '#540000',
-                    height: 1,
-                    width: '70%',
-                  }}
-                />
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <TextInput
-                    style={{
-                      width: '70%',
-                      marginTop: 20,
-                      borderRadius: 10,
-                      paddingLeft: 36,
-                      height: 40,
-                      marginBottom: 2,
-                      color: 'black',
-                    }}
-                    secureTextEntry={this.state.isShow == true ? true : false}
-                    placeholder="Password"
-                    placeholderTextColor="#a6a6a6"
-                    onChangeText={textPass => {
-                      this.setState({formPass: textPass});
-                    }}
-                  />
-                  <TouchableOpacity
-                    onPress={() =>
-                      this.state.isShow == true
-                        ? this.setState({isShow: false})
-                        : this.setState({isShow: true})
-                    }>
-                    <Image
-                      source={
-                        this.state.isShow == true
-                          ? require('./../../../assets/images/icon/private.png')
-                          : require('./../../../assets/images/icon/vision.png')
-                      }
-                      style={{
-                        height: 20,
-                        width: 20,
-                        marginRight: 20,
-                        marginTop: 25,
-                      }}
-                    />
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={{
-                    backgroundColor: '#540000',
-                    height: 1,
-                    width: '70%',
-                  }}
-                />
-                <View
-                  style={{
-                    marginVertical: 40,
-                    alignSelf: 'flex-end',
-                    marginRight: '15%',
-                  }}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      alert('Silahkan hubungi petugas perpustakaan')
-                    }>
-                    <Text style={{color: 'black'}}>Lupa Password?</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View style={{backgroundColor: '#540000', flex: 1}}>
-          <View
-            style={{
-              backgroundColor: 'white',
-              width: '100%',
-              flex: 1,
-              borderTopLeftRadius: 80,
-            }}>
-            {this.state.isLoading == true ? (
-              <View
-                style={{
-                  alignItems: 'center',
-                  flex: 2,
-                  marginTop: 40,
-                }}>
-                <ActivityIndicator size="large" color="#540000" />
-              </View>
-            ) : null}
-            <View style={{alignItems: 'center'}}>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#1C2938',
-                  height: 50,
-                  width: '70%',
-                  marginTop: 40,
-                  justifyContent: 'center',
-                  borderRadius: 10,
+            <View style={styles.garis} />
+            <View style={styles.boxPass}>
+              <TextInput
+                style={styles.textInputPass}
+                secureTextEntry={this.state.isShow == true ? true : false}
+                placeholder="Password"
+                placeholderTextColor="#a6a6a6"
+                onChangeText={textPass => {
+                  this.setState({formPass: textPass});
                 }}
-                onPress={() => {
-                  this.cekLogin(this.state.formNim, this.state.formPass);
-                }}>
-                <Text
-                  style={{
-                    color: 'white',
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                    borderTopRightRadius: 80,
-                  }}>
-                  MASUK
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                alignSelf: 'center',
-                flexDirection: 'row',
-                marginTop: 20,
-              }}>
-              <Text>Belum memiliki akun?</Text>
+              />
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Daftar')}>
-                <Text
-                  style={{
-                    marginLeft: 5,
-                    fontWeight: 'bold',
-                    color: 'darkblue',
-                  }}>
-                  Daftar
-                </Text>
+                onPress={() =>
+                  this.state.isShow == true
+                    ? this.setState({isShow: false})
+                    : this.setState({isShow: true})
+                }>
+                <Image
+                  source={
+                    this.state.isShow == true
+                      ? require('./../../../assets/images/icon/private.png')
+                      : require('./../../../assets/images/icon/vision.png')
+                  }
+                  style={styles.iconMata}
+                />
               </TouchableOpacity>
             </View>
+            <View style={styles.garis} />
           </View>
-        </View>
-        <View style={{flex: 0.2}}>
-          <Text
-            style={{
-              marginBottom: 16,
-              textAlign: 'center',
-              color: '#adadad',
-              backgroundColor: 'white',
-            }}>
-            @CopyRight Perpus Pasim 2021
-          </Text>
-        </View>
+          {this.state.isLoading == true ? (
+            <View style={styles.bgLoading}>
+              <ActivityIndicator size="large" color="#540000" />
+            </View>
+          ) : null}
+          <View style={styles.bgButtonMasuk}>
+            <TouchableOpacity
+              onPress={() => {
+                this.cekLogin(this.state.formNim, this.state.formPass);
+              }}>
+              <Text style={styles.textMasuk}>Masuk</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.bgTextBottom}>
+            <Text>Belum memiliki akun?</Text>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Daftar')}>
+              <Text style={styles.touchBottom}>Daftar</Text>
+            </TouchableOpacity>
+          </View>
+          <Footer />
+        </ScrollView>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   container: {
     flex: 1,
     backgroundColor: 'white',
-    borderBottomLeftRadius: 20,
   },
-  backgroundInput: {
-    borderRadius: 20,
-    paddingTop: 40,
-    backgroundColor: '#540000',
+  textPerintah: {
+    color: 'white',
+    backgroundColor: warna,
+    fontSize: normalize(25),
+    fontWeight: 'bold',
+    textAlign: 'right',
+    padding: normalize(15),
+    marginLeft: normalize(10),
+    borderTopLeftRadius: normalize(60),
+    borderBottomLeftRadius: normalize(60),
+    paddingRight: normalize(40),
+    marginTop: normalize(100),
+  },
+  form: {
+    justifyContent: 'center',
     alignItems: 'center',
-    width: '95%',
-    height: 200,
+    padding: normalize(30),
+    marginBottom: normalize(60),
+    marginTop: normalize(60),
   },
-  logo: {
-    marginBottom: 50,
-    height: 50,
-    width: 50,
+  bgButtonMasuk: {
+    backgroundColor: warna,
+    padding: normalize(15),
+    marginRight: normalize(10),
+    borderTopRightRadius: normalize(60),
+    borderBottomRightRadius: normalize(60),
+    paddingLeft: normalize(30),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  inputView: {
-    width: '80%',
+  textMasuk: {
+    color: warna,
+    padding: normalize(10),
+    textAlign: 'center',
+    borderRadius: normalize(5),
+    width: normalize(150),
     backgroundColor: 'white',
-    borderRadius: 25,
-    height: 50,
-    justifyContent: 'center',
-    padding: 20,
-    marginVertical: 5,
   },
-  inputText: {
-    height: 50,
-    color: 'black',
-    borderColor: 'black',
-  },
-  forgot: {
-    color: 'black',
-    fontSize: 15,
-    paddingTop: 12,
-  },
-  loginBtn: {
-    width: '80%',
-    backgroundColor: 'green',
-    borderRadius: 25,
-    height: 50,
+  bgLoading: {
     alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 60,
-    marginBottom: 10,
+    paddingBottom: normalize(60),
+  },
+  bgTextBottom: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    padding: normalize(30),
+    paddingBottom: normalize(100),
+  },
+  touchBottom: {
+    marginLeft: normalize(5),
+    fontWeight: 'bold',
+    color: 'darkblue',
+  },
+  garis: {
+    height: normalize(4),
+    width: '100%',
+    backgroundColor: warna,
+  },
+  textInputNim: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: normalize(40),
+    color: 'black',
+    marginLeft: normalize(20),
+  },
+  textInputPass: {
+    backgroundColor: 'white',
+    width: '85%',
+    marginRight: normalize(20),
+    height: normalize(40),
+    color: 'black',
+    marginLeft: normalize(10),
+  },
+  boxPass: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    marginTop: normalize(30),
+  },
+  iconMata: {
+    height: normalize(20),
+    width: normalize(20),
+    margin: normalize(10),
   },
 });
