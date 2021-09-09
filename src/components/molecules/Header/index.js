@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomRightRadius: 80,
+    borderBottomRightRadius: normalize(60),
   },
   bgImage: {
     width: normalize(50),
