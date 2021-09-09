@@ -6,11 +6,14 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  StyleSheet,
 } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './../../../components/molecules/Header';
 import {notifikasi} from '../../../components/molecules/LocalNotification/Notifikasi';
+import n from 'react-native-normalize';
+import GarisKecil from './../../../components/atoms/GarisKecil';
 
 class QRPinjam extends Component {
   constructor(props) {
@@ -114,113 +117,52 @@ class QRPinjam extends Component {
     };
 
     return (
-      <View
-        style={{
-          backgroundColor: 'white',
-          flex: 1,
-        }}>
+      <View style={styles.container}>
         <Header />
-        <View
-          style={{
-            alignItems: 'center',
-            height: '100%',
-            width: '100%',
-            paddingVertical: '17%',
-            backgroundColor: 'white',
-            flex: 1,
-          }}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginBottom: 20,
-            }}>
-            Silahkan Scan QR Dibawah ini !
-          </Text>
+        <Text style={styles.titleTop}>Silahkan Scan QR Dibawah ini !</Text>
+        <View style={styles.qr}>
           <QRCode
             value={url}
-            quietZone={5}
-            size={300}
+            quietZone={n(5)}
+            size={n(300)}
             enableLinearGradient={true}
             linearGradient={['red', 'black']}
           />
-          <Text style={{marginVertical: 8}}>
-            {this.state.namaBuku.substring(0, 30)}
-          </Text>
         </View>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
-          <TouchableOpacity
-            onPress={cek}
-            style={{
-              height: 30,
-              width: 150,
-              backgroundColor: 'maroon',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: 50,
-              marginBottom: 20,
-              borderRadius: 15,
-            }}>
-            <Text style={{color: 'white'}}>Lanjutkan</Text>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            backgroundColor: '#ededed',
-            height: 5,
-            width: '100%',
-          }}
-        />
-        <View style={{marginVertical: 8, backgroundColor: 'white'}}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginLeft: 16,
-              marginVertical: 6,
-            }}>
-            Bagaimana caranya ?
-          </Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: '#ededed',
-            height: 5,
-            width: '100%',
-          }}
-        />
-        <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-          <View
-            style={{flexDirection: 'column', marginLeft: 32, marginTop: 16}}>
-            <View
-              style={{width: '90%', flexDirection: 'row', marginVertical: 10}}>
-              <Text>1. </Text>
-              <Text style={{marginLeft: 10}}>
-                Datanglah ke perpustakaan Universitas Nasional PASIM.
-              </Text>
-            </View>
-            <View
-              style={{width: '90%', flexDirection: 'row', marginVertical: 10}}>
-              <Text>2. </Text>
-              <Text style={{marginLeft: 10}}>
-                Scan QR Code kamu dengan Scanner yang disediakan oleh petugas.
-              </Text>
-            </View>
-            <View
-              style={{width: '90%', flexDirection: 'row', marginVertical: 10}}>
-              <Text>3. </Text>
-              <Text style={{marginLeft: 10}}>
-                Klik lanjutkan setelah petugas selesai melakukan scan.
-              </Text>
-            </View>
-            <View
-              style={{width: '90%', flexDirection: 'row', marginVertical: 10}}>
-              <Text>4. </Text>
-              <Text style={{marginLeft: 10}}>
-                Waktu peminjaman adalah 7 hari sejak buku di pinjam. Diharapkan
-                untuk tidak telat dalam pengembalian buku.
-              </Text>
-            </View>
+        <Text style={styles.namaBuku}>
+          {this.state.namaBuku.substring(0, 40)}
+        </Text>
+        <TouchableOpacity onPress={cek} style={styles.button}>
+          <Text style={styles.btnText}>Lanjutkan</Text>
+        </TouchableOpacity>
+        <GarisKecil />
+        <Text style={styles.bagaimana}>Bagaimana caranya ?</Text>
+        <GarisKecil />
+        <ScrollView style={styles.scroll}>
+          <View style={styles.list}>
+            <Text>1. </Text>
+            <Text style={styles.desc}>
+              Datanglah ke perpustakaan Universitas Nasional PASIM.
+            </Text>
+          </View>
+          <View style={styles.list}>
+            <Text>2. </Text>
+            <Text style={styles.desc}>
+              Scan QR Code kamu dengan Scanner yang disediakan oleh petugas.
+            </Text>
+          </View>
+          <View style={styles.list}>
+            <Text>3. </Text>
+            <Text style={styles.desc}>
+              Klik lanjutkan setelah petugas selesai melakukan scan.
+            </Text>
+          </View>
+          <View style={styles.list}>
+            <Text>4. </Text>
+            <Text style={styles.desc}>
+              Waktu peminjaman adalah 7 hari sejak buku di pinjam. Diharapkan
+              untuk tidak telat dalam pengembalian buku.
+            </Text>
           </View>
         </ScrollView>
       </View>
@@ -228,112 +170,59 @@ class QRPinjam extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    flex: 1,
+  },
+  titleTop: {
+    fontSize: n(20),
+    fontWeight: 'bold',
+    marginBottom: n(20),
+    textAlign: 'center',
+    margin: n(16),
+  },
+  qr: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  namaBuku: {
+    marginTop: n(16),
+    textAlign: 'center',
+  },
+  button: {
+    height: n(30),
+    width: n(150),
+    backgroundColor: 'maroon',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: n(16),
+    alignSelf: 'center',
+    borderRadius: 15,
+  },
+  btnText: {
+    color: 'white',
+  },
+  bagaimana: {
+    fontSize: n(20),
+    fontWeight: 'bold',
+    marginLeft: n(16),
+    marginVertical: n(6),
+  },
+  scroll: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  list: {
+    flex: 1,
+    flexDirection: 'row',
+    marginHorizontal: n(16),
+    marginVertical: n(10),
+  },
+  desc: {
+    marginLeft: n(10),
+  },
+});
+
 export default QRPinjam;
-
-//
-//
-//
-// BERATTTTT
-//
-//
-//
-//
-
-// import React, {Component} from 'react';
-// import {View, Image, Text, ActivityIndicator} from 'react-native';
-// import canvas from 'react-native-canvas';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// // 1. Import
-// import {QRCode, Canvas} from 'easyqrcode-react-native';
-
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       nim: '',
-//     };
-
-//     try {
-//       AsyncStorage.getItem('@nim', (error, result) => {
-//         if (result) {
-//           this.setState({
-//             nim: result,
-//           });
-//         }
-//       });
-//     } catch (error) {
-//       alert('NIM tidak ditemukan, silahkan untuk Login ulang');
-//     }
-//   }
-//   // 3. Generate QRCode
-//   generateQRCode = canvas => {
-//     var isLoading = 'true';
-//     var url = `http://192.168.137.1/Mine/Crudphpapi/ApiPengunjung.php?nim=${this.state.nim}`;
-//     try {
-//       if (canvas !== null) {
-//         const logoImage = Image.resolveAssetSource(
-//           require('./../../../assets/images/logo/pasim.png'),
-//         ).uri;
-//         // QRCode options
-//         var options = {
-//           text: url,
-//           logo: logoImage,
-//           quietZone: 5,
-//           quietZoneColor: 'white',
-//         };
-//         // Create QRCode Object
-//         var qrcode = new QRCode(canvas, options);
-//         isLoading = 'false';
-
-//         //   var qrCode = new QRCode(canvas, options);
-//       }
-//     } catch (error) {
-//       alert('Tolong periksa jaringan anda');
-//       this.navigation.navigate('Home');
-//     }
-//   };
-
-//   render() {
-//     return (
-//       <View
-//         style={{
-//           alignItems: 'center',
-//           height: '100%',
-//           width: '100%',
-//           paddingVertical: '20%',
-//           backgroundColor: 'white',
-//         }}>
-//         <View
-//           style={{
-//             paddingVertical: 5,
-//             paddingHorizontal: 5,
-//             backgroundColor: 'black',
-//             alignItems: 'center',
-//             justifyContent: 'center',
-//             flexDirection: 'column',
-//           }}>
-//           <View
-//             style={{
-//               paddingVertical: 5,
-//               paddingHorizontal: 5,
-//               backgroundColor: 'white',
-//               alignItems: 'center',
-//               justifyContent: 'center',
-//               flexDirection: 'column',
-//             }}>
-//             <ActivityIndicator
-//               style={{position: 'absolute'}}
-//               size="large"
-//               color="#00ff00"
-//             />
-//             {/* 2. QRCode Canvas  */}
-//             <Canvas ref={this.generateQRCode} />
-//           </View>
-//         </View>
-//       </View>
-//     );
-//   }
-// }
-
-// export default App;

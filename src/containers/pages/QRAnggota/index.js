@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
-import {View, ActivityIndicator, Text, Image, ScrollView} from 'react-native';
+import {
+  View,
+  ActivityIndicator,
+  Text,
+  Image,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './../../../components/molecules/Header';
-import GarisAbu from './../../../components/atoms/GarisAbu/index';
+import GarisKecil from './../../../components/atoms/GarisKecil/index';
+import n from 'react-native-normalize';
 
 class QRAnggota extends Component {
   constructor(props) {
@@ -46,46 +54,23 @@ class QRAnggota extends Component {
     let url = this.state.nim + ',' + this.state.nama;
 
     return (
-      <View style={{backgroundColor: 'white', flex: 1}}>
+      <View style={styles.container}>
         <Header />
-        <View
-          style={{
-            alignItems: 'center',
-            height: '100%',
-            width: '100%',
-            paddingVertical: '17%',
-            backgroundColor: 'white',
-            flex: 1,
-          }}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginBottom: 20,
-            }}>
-            Yuk isi daftar kunjungan perpustakaan !
-          </Text>
+        <Text style={styles.titleTop}>
+          Yuk isi daftar kunjungan perpustakaan !
+        </Text>
+        <View style={styles.qr}>
           <QRCode
             value={url}
-            quietZone={5}
-            size={300}
+            quietZone={n(5)}
+            size={n(300)}
             enableLinearGradient={true}
             linearGradient={['red', 'black']}
           />
         </View>
-        <GarisAbu />
-        <View style={{marginVertical: 8, backgroundColor: 'white'}}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginLeft: 16,
-              marginVertical: 6,
-            }}>
-            Bagaimana caranya ?
-          </Text>
-        </View>
-        <GarisAbu />
+        <GarisKecil />
+        <Text style={styles.bagaimana}>Bagaimana caranya ?</Text>
+        <GarisKecil />
         <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
           <View
             style={{flexDirection: 'column', marginLeft: 32, marginTop: 16}}>
@@ -124,5 +109,29 @@ class QRAnggota extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    flex: 1,
+  },
+  titleTop: {
+    fontSize: n(20),
+    fontWeight: 'bold',
+    textAlign: 'center',
+    margin: n(16),
+  },
+  qr: {
+    alignSelf: 'center',
+    margin: n(16),
+    flex: 1,
+  },
+  bagaimana: {
+    fontSize: n(20),
+    fontWeight: 'bold',
+    marginLeft: n(16),
+    marginVertical: n(6),
+  },
+});
 
 export default QRAnggota;

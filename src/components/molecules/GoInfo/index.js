@@ -22,32 +22,16 @@ const GoInfo = () => {
           borderBottomColor: '#e8e9ed',
           borderBottomWidth: 1,
         }}>
-        <Text
-          style={{
-            fontSize: 17,
-            fontWeight: 'bold',
-            color: '#1c1c1c',
-            marginTop: 15,
-            marginBottom: 20,
-          }}>
-          E-RESOURCES
-        </Text>
+        <Text style={styles.title}>E-RESOURCES</Text>
         <View style={{flexDirection: 'row'}}>
           <View>
             <Image
               source={require('./../../../assets/images/dummy/logoperpusonline.png')}
-              style={{width: 180, height: 100}}
+              style={styles.image}
             />
           </View>
           <View style={{marginLeft: 16, flex: 1}}>
-            <Text
-              style={{
-                fontSize: 15,
-                fontWeight: 'bold',
-                color: '#4a4a4a',
-              }}>
-              Daftar Perpustakaan Nasional
-            </Text>
+            <Text style={styles.titleDesc}>Daftar Perpustakaan Nasional</Text>
             <Text style={styles.desc}>
               perpustakaan digital online seperti jurnal , ebook, dan
               karya-karya referensi online lainnya.
@@ -80,6 +64,22 @@ const GoInfo = () => {
 };
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: n(17),
+    fontWeight: 'bold',
+    color: '#1c1c1c',
+    marginTop: n(15),
+    marginBottom: n(20),
+  },
+  image: {
+    width: n(150),
+    height: n(100),
+  },
+  titleDesc: {
+    fontSize: n(15),
+    fontWeight: 'bold',
+    color: '#4a4a4a',
+  },
   desc: {
     fontSize: n(13),
     fontWeight: 'normal',

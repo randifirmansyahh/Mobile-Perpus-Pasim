@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  View,
-  TouchableOpacity,
-  Alert,
-  Image,
-  Linking,
-  Animated,
-  PanResponder,
-  useEffect,
-  LogBox,
-} from 'react-native';
+import {View, TouchableOpacity, Alert, Image, Linking} from 'react-native';
 
 const linkBukuPop = () => {
   Linking.openURL(
@@ -30,35 +20,9 @@ const askSee = () => {
 };
 
 const FloatingButton = () => {
-  const a = () => {
-    useEffect(() => {
-      LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-    }, []);
-  };
-
-  LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-
-  let pan = new Animated.ValueXY();
-  let panResponder = PanResponder.create({
-    onMoveShouldSetPanResponder: () => true,
-    onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {
-      useNativeDriver: false,
-    }),
-    onPanResponderRelease: () => {
-      Animated.spring(
-        pan,
-        {toValue: {x: 0, y: 0}},
-        {
-          useNativeDriver: false,
-        },
-      ).start();
-    },
-  });
-
   return (
-    <Animated.View
+    <View
       style={{
-        transform: [{translateX: pan.x}, {translateY: pan.y}],
         width: 60,
         height: 60,
         borderRadius: 60,
@@ -68,8 +32,7 @@ const FloatingButton = () => {
         right: 30,
         justifyContent: 'center',
         alignItems: 'center',
-      }}
-      {...panResponder.panHandlers}>
+      }}>
       <TouchableOpacity
         onPress={() => askSee()}
         style={{
@@ -90,7 +53,7 @@ const FloatingButton = () => {
           }}
         />
       </TouchableOpacity>
-    </Animated.View>
+    </View>
   );
 };
 

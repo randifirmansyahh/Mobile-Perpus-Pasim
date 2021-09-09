@@ -45,31 +45,29 @@ export default class Bantuan extends React.Component {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
+            flexDirection: 'row',
+            width: '100%',
             alignItems: 'center',
             height: 50,
             borderTopWidth: 1,
             borderColor: '#ededed',
             marginVertical: 10,
           }}>
-          <Text
-            style={{
-              fontSize: 15,
-              fontWeight: 'bold',
-              width: '90%',
-              marginTop: 10,
-            }}>
-            {props.judul}
-          </Text>
           <TouchableOpacity
             onPress={() =>
               this.state.show == props.urutan
                 ? this.setState({show: 0})
                 : this.setState({show: props.urutan})
             }>
-            <Image
-              source={require('../../../assets/images/icon/down.png')}
-              style={{width: 20, height: 20, marginRight: 16}}
-            />
+            <Text
+              style={{
+                fontSize: 15,
+                fontWeight: 'bold',
+                width: '90%',
+                marginTop: 10,
+              }}>
+              {props.judul}
+            </Text>
           </TouchableOpacity>
         </View>
       );
