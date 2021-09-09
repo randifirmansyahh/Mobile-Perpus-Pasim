@@ -55,7 +55,7 @@ const slides = [
   {
     key: '2',
     title: 'Pinjam buku hanya dengan Scan QR!',
-    text: 'Mudah! Meminjam buku yang kamu inginkan hanya dengan Scan QR yang ada apa buku favoritmu!.',
+    text: 'Mudah! Meminjam buku yang kamu inginkan hanya dengan Scan QR yang ada apa buku favoritmu!',
     image: require('../../../assets/images/dummy/handbook.jpg'),
     colors: ['#fff'],
   },
@@ -81,9 +81,9 @@ const items = ({item, dimensions}) => (
       styles.mainContent,
       {
         flex: 1,
-        paddingTop: item.topSpacer,
-        paddingBottom: item.bottomSpacer,
-        width: dimensions.width,
+        paddingTop: normalize(10),
+        paddingBottom: normalize(10),
+        width: '100%',
         backgroundColor: 'white',
       },
     ]}
@@ -107,9 +107,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   image: {
-    width: normalize(300),
-    height: normalize(300),
-    marginTop: normalize(-100),
+    width: normalize(200),
+    height: normalize(200),
     borderRadius: normalize(100),
   },
   text: {
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     textAlign: 'center',
     paddingHorizontal: normalize(16),
-    marginTop: responsiveHeight(-15),
+    marginBottom: normalize(80),
   },
   title: {
     fontSize: normalize(22),
@@ -125,13 +124,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     textAlign: 'center',
     fontWeight: 'bold',
-    marginTop: responsiveHeight(2),
     padding: normalize(20),
     backgroundColor: '#e8e8e8',
     borderRadius: normalize(10),
   },
   nextButton: {
-    fontSize: responsiveFontSize(2.3),
+    fontSize: normalize(20),
     fontWeight: 'bold',
     color: warna,
     marginRight: normalize(10),
@@ -139,7 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: normalize(10),
   },
   prevButton: {
-    fontSize: responsiveFontSize(2.3),
+    fontSize: normalize(20),
     fontWeight: 'bold',
     color: warna,
     marginLeft: normalize(10),
@@ -147,7 +145,7 @@ const styles = StyleSheet.create({
     borderRadius: normalize(10),
   },
   doneButton: {
-    fontSize: responsiveFontSize(2.3),
+    fontSize: normalize(20),
     fontWeight: 'bold',
     color: 'white',
     marginRight: normalize(10),

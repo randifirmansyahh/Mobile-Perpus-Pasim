@@ -1,5 +1,6 @@
 import React from 'react';
 import AskSee from './../../atoms/AskSee';
+import n from 'react-native-normalize';
 import {
   View,
   Image,
@@ -7,6 +8,7 @@ import {
   TouchableOpacity,
   Linking,
   Alert,
+  StyleSheet,
 } from 'react-native';
 
 const PerpusNasional = 'https://e-resources.perpusnas.go.id/';
@@ -46,13 +48,7 @@ const GoInfo = () => {
               }}>
               Daftar Perpustakaan Nasional
             </Text>
-            <Text
-              style={{
-                fontSize: 15,
-                fontWeight: 'normal',
-                color: '#4a4a4a',
-                marginTop: 10,
-              }}>
+            <Text style={styles.desc}>
               perpustakaan digital online seperti jurnal , ebook, dan
               karya-karya referensi online lainnya.
             </Text>
@@ -82,5 +78,14 @@ const GoInfo = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  desc: {
+    fontSize: n(13),
+    fontWeight: 'normal',
+    color: '#4a4a4a',
+    marginTop: n(10),
+  },
+});
 
 export default GoInfo;

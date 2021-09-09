@@ -115,6 +115,9 @@ export default class Login extends React.Component {
               </TouchableOpacity>
             </View>
             <View style={styles.garis} />
+            <TouchableOpacity style={styles.lupa} onPress={lupa}>
+              <Text style={styles.textLupa}>Lupa kata sandi ?</Text>
+            </TouchableOpacity>
           </View>
           {this.state.isLoading == true ? (
             <View style={styles.bgLoading}>
@@ -143,6 +146,10 @@ export default class Login extends React.Component {
   }
 }
 
+const lupa = () => {
+  alert('Silahkan hubungi perpustakaan Universitas Nasional Pasim');
+};
+
 const styles = StyleSheet.create({
   main: {
     flex: 1,
@@ -162,15 +169,22 @@ const styles = StyleSheet.create({
     marginLeft: normalize(10),
     borderTopLeftRadius: normalize(60),
     borderBottomLeftRadius: normalize(60),
-    paddingRight: normalize(40),
-    marginTop: normalize(100),
+    paddingRight: normalize(30),
+    marginTop: normalize(40),
   },
   form: {
     justifyContent: 'center',
     alignItems: 'center',
     padding: normalize(30),
-    marginBottom: normalize(60),
-    marginTop: normalize(60),
+    marginTop: normalize(40),
+  },
+  lupa: {
+    marginTop: normalize(30),
+    width: '100%',
+  },
+  textLupa: {
+    color: 'black',
+    textAlign: 'right',
   },
   bgButtonMasuk: {
     backgroundColor: warna,
@@ -192,13 +206,13 @@ const styles = StyleSheet.create({
   },
   bgLoading: {
     alignItems: 'center',
-    paddingBottom: normalize(60),
+    paddingBottom: normalize(40),
   },
   bgTextBottom: {
     alignSelf: 'center',
     flexDirection: 'row',
     padding: normalize(30),
-    paddingBottom: normalize(100),
+    paddingBottom: normalize(40),
   },
   touchBottom: {
     marginLeft: normalize(5),

@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: normalize(30),
-    marginBottom: normalize(60),
+    marginBottom: normalize(40),
     marginTop: normalize(40),
   },
   bgButtonMasuk: {
@@ -382,13 +382,13 @@ const styles = StyleSheet.create({
   },
   bgLoading: {
     alignItems: 'center',
-    paddingBottom: normalize(60),
+    paddingBottom: normalize(40),
   },
   bgTextBottom: {
     alignSelf: 'center',
     flexDirection: 'row',
     padding: normalize(30),
-    paddingBottom: normalize(60),
+    paddingBottom: normalize(40),
   },
   touchBottom: {
     marginLeft: normalize(5),
