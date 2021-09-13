@@ -9,6 +9,7 @@ import QRAnggota from './QRAnggota';
 import CariBuku from './CariBuku';
 import Riwayat from './Riwayat';
 import DetailBuku from './DetailBuku';
+import DetailPinjamBuku from './DetailPinjamBuku';
 import QRPinjam from './QRPinjam';
 import SplashScreen from './SplashScreen';
 import Intro from './Intro';
@@ -25,6 +26,7 @@ export {
   QRAnggota,
   CariBuku,
   DetailBuku,
+  DetailPinjamBuku,
   QRPinjam,
   SplashScreen,
   Intro,

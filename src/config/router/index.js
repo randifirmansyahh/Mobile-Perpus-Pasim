@@ -12,6 +12,7 @@ import {
   QRAnggota,
   CariBuku,
   DetailBuku,
+  DetailPinjamBuku,
   QRPinjam,
   SplashScreen,
   Intro,
@@ -72,6 +73,7 @@ const ScanStack = createStackNavigator(
 const RiwayatStack = createStackNavigator(
   {
     Riwayat,
+    DetailPinjamBuku,
   },
   {
     headerMode: 'none',

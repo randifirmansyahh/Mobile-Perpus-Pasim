@@ -1,99 +1,182 @@
 import React from 'react';
-import {Text, View, Button, TouchableOpacity} from 'react-native';
+import {Text, View, Button, TouchableOpacity, StyleSheet} from 'react-native';
 import Navbar from './../../../containers/organisms/NavBar';
 import Header from './../../../components/molecules/Header';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import GarisKecil from './../../../components/atoms/GarisKecil/index';
+import IconLoading from './../../../components/atoms/IconLoading/index';
 
-const Riwayat = () => {
-  return (
-    <>
-      <View
-        style={{
-          height: 54,
-          flexDirection: 'column',
-          backgroundColor: 'white',
-          borderTopColor: '#e8e9ed',
-          // borderTopWidth: 1,
-          flex: 1,
-        }}>
-        <Header />
+export default class Riwayat extends React.Component {
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      listData: [],
+      isLoading: true,
+      namaBuku: '',
+    };
+
+    this.url =
+      'https://perpuspasim.000webhostapp.com/ApiPinjamBuku.php?op=aktif&id=';
+  }
+
+  componentDidMount() {
+    AsyncStorage.getItem('@nim', (error, result) => {
+      if (result) {
+        this.GetDetail(result);
+      }
+    });
+  }
+
+  async GetDetail(param) {
+    this.setState({isLoading: true});
+    await fetch(this.url + param)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({listData: json.data.result});
+        this.setState({isLoading: false});
+      })
+      .catch(error => {
+        alert(error);
+      });
+  }
+
+  render() {
+    return (
+      <>
         <View
           style={{
-            backgroundColor: '#ebebeb',
-            flexDirection: 'row',
-            width: '100%',
-            borderColor: '#e8e9ed',
-            borderBottomWidth: 1,
+            height: 54,
+            flexDirection: 'column',
+            backgroundColor: 'white',
+            borderTopColor: '#e8e9ed',
+            // borderTopWidth: 1,
+            flex: 1,
           }}>
-          <TouchableOpacity
-            // onPress={props.onPress}
+          <Header />
+          <View
             style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: 'white',
-              height: 60,
-              borderBottomWidth: 2,
-              borderColor: '#540000',
               backgroundColor: '#ebebeb',
-              // backgroundColor: props.active ? '#ebebeb' : 'white',
+              flexDirection: 'row',
+              width: '100%',
+              borderColor: '#e8e9ed',
+              borderBottomWidth: 1,
             }}>
-            <View
+            <TouchableOpacity
+              // onPress={props.onPress}
               style={{
-                height: 2,
-                backgroundColor: '#540000',
-                borderRadius: 26,
-              }}></View>
-            {/* <Image style={{height: 26, width: 26}} source={props.img}></Image> */}
-            <Text
-              style={{
-                fontSize: 10,
-                // color: props.active ? '#540000' : '#545454',
-                marginTop: 4,
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'white',
+                height: 60,
+                borderBottomWidth: 2,
+                borderColor: '#540000',
+                backgroundColor: '#ebebeb',
+                // backgroundColor: props.active ? '#ebebeb' : 'white',
               }}>
-              BERLANGSUNG
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            // onPress={props.onPress}
+              <View
+                style={{
+                  height: 2,
+                  backgroundColor: '#540000',
+                  borderRadius: 26,
+                }}></View>
+              {/* <Image style={{height: 26, width: 26}} source={props.img}></Image> */}
+              <Text
+                style={{
+                  fontSize: 10,
+                  // color: props.active ? '#540000' : '#545454',
+                  marginTop: 4,
+                }}>
+                BERLANGSUNG
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              // onPress={props.onPress}
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'white',
+                height: 60,
+                // borderTopWidth: props.active ? 2 : 0,
+                borderColor: '#540000',
+                // backgroundColor: props.active ? '#ebebeb' : 'white',
+              }}>
+              <View
+                style={{
+                  height: 2,
+                  backgroundColor: '#540000',
+                  borderRadius: 26,
+                }}></View>
+              {/* <Image style={{height: 26, width: 26}} source={props.img}></Image> */}
+              <Text
+                style={{
+                  fontSize: 10,
+                  // color: props.active ? '#540000' : '#545454',
+                  marginTop: 4,
+                }}>
+                SELESAI
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
             style={{
-              flex: 1,
-              alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: 'white',
-              height: 60,
-              // borderTopWidth: props.active ? 2 : 0,
-              borderColor: '#540000',
-              // backgroundColor: props.active ? '#ebebeb' : 'white',
+              alignItems: 'center',
+              marginTop: 16,
             }}>
-            <View
-              style={{
-                height: 2,
-                backgroundColor: '#540000',
-                borderRadius: 26,
-              }}></View>
-            {/* <Image style={{height: 26, width: 26}} source={props.img}></Image> */}
-            <Text
-              style={{
-                fontSize: 10,
-                // color: props.active ? '#540000' : '#545454',
-                marginTop: 4,
-              }}>
-              SELESAI
-            </Text>
-          </TouchableOpacity>
+            {this.state.isLoading == true ? <IconLoading /> : null}
+            {this.state.listData.length == 0 &&
+            this.state.isLoading == false ? (
+              <Text>Belum ada data peminjaman</Text>
+            ) : null}
+            {this.state.listData.map((val, index) => (
+              <View style={styles.box} key={index}>
+                <TouchableOpacity
+                  style={styles.touch}
+                  onPress={() => {
+                    AsyncStorage.setItem('@idBuku', val.idBuku);
+                    AsyncStorage.setItem('@idPinjam', val.id);
+                    this.props.navigation.navigate('DetailPinjamBuku');
+                  }}>
+                  <Text style={styles.judul}>{val.judul}</Text>
+                  <Text style={styles.waktu}>
+                    Batas Peminjaman : {val.batas}
+                  </Text>
+                </TouchableOpacity>
+                <GarisKecil />
+              </View>
+            ))}
+          </View>
         </View>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 16,
-          }}>
-          <Text>Belum ada data peminjaman</Text>
-        </View>
-      </View>
-      <Navbar />
-    </>
-  );
-};
+        <Navbar />
+      </>
+    );
+  }
+}
 
-export default Riwayat;
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    flex: 1,
+  },
+  box: {
+    width: '100%',
+  },
+  touch: {
+    width: '100%',
+    paddingHorizontal: 16,
+    marginVertical: 10,
+  },
+  judul: {
+    textAlign: 'left',
+    fontWeight: 'bold',
+  },
+});

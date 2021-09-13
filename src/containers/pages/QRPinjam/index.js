@@ -86,7 +86,8 @@ class QRPinjam extends Component {
 
   render() {
     let logoFromFile = require('./../../../assets/images/logo/pasim.png');
-    let url = this.state.nim + ',' + this.state.idBuku;
+    let url =
+      this.state.nim + ',' + this.state.idBuku + ',' + this.state.namaBuku;
 
     const cek = () => {
       // cek ke api peminjaman, if true, redirect ke riwayat.

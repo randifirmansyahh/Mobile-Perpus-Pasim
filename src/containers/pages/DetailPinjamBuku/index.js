@@ -13,7 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import IconLoading from './../../../components/atoms/IconLoading/index';
 import Header from './../../../components/molecules/Header';
 
-export default class DetailBuku extends Component {
+export default class DetailPinjamBuku extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,21 +21,12 @@ export default class DetailBuku extends Component {
       isLoading: true,
     };
 
-    // Laptop
-    // this.url =
-    //   'http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php?op=detail&query=';
-
-    // Hp
-    // this.url =
-    //   'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php?op=detail&query=';
-
-    // hosting webhost
     this.url =
-      'https://perpuspasim.000webhostapp.com/ApiBuku.php?op=detail&query=';
+      'https://perpuspasim.000webhostapp.com/ApiPinjamBuku.php?op=detail&id=';
   }
 
   componentDidMount() {
-    AsyncStorage.getItem('@idBuku', (error, result) => {
+    AsyncStorage.getItem('@idPinjam', (error, result) => {
       if (result) {
         this.GetDetail(result);
       }
@@ -87,24 +78,15 @@ export default class DetailBuku extends Component {
                       />
                     </View>
                     <Text style={styles.judul}>{val.judul}</Text>
-                    <Detail title="ID Buku" id={val.id} />
-                    <Detail title="ISBN" id={val.isbn} />
-                    <Detail title="Pengarang" id={val.pengarang} />
-                    <Detail title="Penerbit" id={val.penerbit} />
-                    <Detail title="Tahun Terbit" id={val.tahun_terbit} />
-                    <Detail title="Kategori" id={val.kategori} />
-                    <Detail title="Kode Kelas" id={val.kode_kelas} />
-                    <Detail title="Jumlah Buku" id={val.jumlah_buku} />
-                    <Detail title="Lokasi" id={val.lokasi} />
-                    <Detail title="Asal Buku" id={val.asal_buku} />
-                    <Detail title="Abstrak" id={val.abstrak} />
+                    <Detail title="Waktu peminjaman" id={val.waktu} />
+                    <Detail title="Batas peminjaman" id={val.batas} />
                     <TouchableOpacity
                       style={styles.button}
                       onPress={() => {
                         AsyncStorage.setItem('@namaBuku', val.judul);
                         this.props.navigation.navigate('QRPinjam');
                       }}>
-                      <Text style={styles.textButton}>Pinjam Buku</Text>
+                      <Text style={styles.textButton}>Kembalikan Buku</Text>
                     </TouchableOpacity>
                   </View>
                 ))}
@@ -139,9 +121,10 @@ let doubleSpace = 20;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
+    flex: 1,
   },
   scroll: {
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
   },
   content: {
     width: lebar,
@@ -171,7 +154,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   jarak: {
-    width: jarak,
+    width: 150,
   },
   jarak2: {
     width: jarak2,
