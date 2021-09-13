@@ -43,11 +43,7 @@ export default class Bantuan extends React.Component {
       return (
         <View
           style={{
-            flexDirection: 'row',
             justifyContent: 'space-between',
-            flexDirection: 'row',
-            width: '100%',
-            alignItems: 'center',
             height: 50,
             borderTopWidth: 1,
             borderColor: '#ededed',
@@ -65,6 +61,7 @@ export default class Bantuan extends React.Component {
                 fontWeight: 'bold',
                 width: '90%',
                 marginTop: 10,
+                textAlign: 'left',
               }}>
               {props.judul}
             </Text>

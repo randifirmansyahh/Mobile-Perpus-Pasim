@@ -9,14 +9,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import SearchFeature from '../../../components/molecules/SearchFeature';
 import Header from '../../../components/molecules/Header';
-import FloatingButton from '../../../components/molecules/FloatingButton';
 import IconLoading from './../../../components/atoms/IconLoading/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// https://masak-apa.tomorisakura.vercel.app/api/recipes all
-// https://masak-apa.tomorisakura.vercel.app/api/search/?q= search
+import Url from '../../../utils/Api';
 
 class CariBuku extends Component {
   constructor(props) {
@@ -30,14 +26,7 @@ class CariBuku extends Component {
       idEdit: null,
     };
 
-    // Laptop
-    // this.url = 'http://192.168.137.1/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
-
-    // Hp
-    // this.url = 'http://192.168.43.216/Mine/PerpusPASIM/ScanBuku/ApiBuku.php';
-
-    //hosting webhost
-    this.url = 'https://perpuspasim.000webhostapp.com/ApiBuku.php';
+    this.url = Url.host + 'ApiBuku.php';
   }
   componentDidMount() {
     this.Semua();
@@ -78,7 +67,6 @@ class CariBuku extends Component {
   render() {
     return (
       <>
-        {/* <SearchFeature /> */}
         <Header />
         <View
           style={{
@@ -158,7 +146,6 @@ class CariBuku extends Component {
             ))}
           </ScrollView>
         ) : null}
-        <FloatingButton />
       </>
     );
   }

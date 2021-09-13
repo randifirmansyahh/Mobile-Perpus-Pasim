@@ -16,15 +16,19 @@ const linkWa = () => {
 };
 
 const askHelp = () => {
-  Alert.alert('Bantuan', 'Butuh bantuan dalam penggunaan aplikasi ?', [
-    {
-      text: 'Tidak',
-    },
-    {
-      text: 'Ya',
-      onPress: () => linkWa(),
-    },
-  ]);
+  Alert.alert(
+    'Perpus pasim 2021 V.1.0.1',
+    'Anda dapat mengirimkan kritik dan saran kepada kami, tentu saja untuk membantu supaya program ini dapat menjadi lebih baik lagi, Terima kasih',
+    [
+      {
+        text: 'Nanti',
+      },
+      {
+        text: 'Kirim Email',
+        onPress: () => linkWa(),
+      },
+    ],
+  );
 };
 
 class SearchFeature extends Component {

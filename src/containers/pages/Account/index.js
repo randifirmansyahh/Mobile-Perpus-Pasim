@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import Navbar from './../../../containers/organisms/NavBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import FloatingButton from '../../../components/molecules/FloatingButton';
 import Header from './../../../components/molecules/Header';
 
 export default class Account extends React.Component {
@@ -170,7 +169,6 @@ export default class Account extends React.Component {
             </View>
           </ImageBackground>
         </ScrollView>
-        <FloatingButton />
         <Navbar />
       </View>
     );
