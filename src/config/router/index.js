@@ -14,6 +14,7 @@ import {
   DetailBuku,
   DetailPinjamBuku,
   QRPinjam,
+  QRKembali,
   SplashScreen,
   Intro,
 } from './../../containers/pages';
@@ -74,6 +75,7 @@ const RiwayatStack = createStackNavigator(
   {
     Riwayat,
     DetailPinjamBuku,
+    QRKembali,
   },
   {
     headerMode: 'none',

@@ -84,7 +84,8 @@ export default class DetailPinjamBuku extends Component {
                       style={styles.button}
                       onPress={() => {
                         AsyncStorage.setItem('@namaBuku', val.judul);
-                        this.props.navigation.navigate('QRPinjam');
+                        AsyncStorage.setItem('@idPinjam', val.id);
+                        this.props.navigation.navigate('QRKembali');
                       }}>
                       <Text style={styles.textButton}>Kembalikan Buku</Text>
                     </TouchableOpacity>

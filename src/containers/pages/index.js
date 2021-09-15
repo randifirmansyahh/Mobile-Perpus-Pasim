@@ -13,6 +13,7 @@ import DetailPinjamBuku from './DetailPinjamBuku';
 import QRPinjam from './QRPinjam';
 import SplashScreen from './SplashScreen';
 import Intro from './Intro';
+import QRKembali from './QRKembali';
 
 export {
   Auth,
@@ -28,6 +29,7 @@ export {
   DetailBuku,
   DetailPinjamBuku,
   QRPinjam,
+  QRKembali,
   SplashScreen,
   Intro,
 };
