@@ -14,12 +14,14 @@ import QRPinjam from './QRPinjam';
 import SplashScreen from './SplashScreen';
 import Intro from './Intro';
 import QRKembali from './QRKembali';
+import RiwayatSelesai from './RiwayatSelesai';
 
 export {
   Auth,
   Account,
   Home,
   Riwayat,
+  RiwayatSelesai,
   ScanQRCode,
   Login,
   Daftar,

@@ -3,6 +3,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {
   Home,
   Riwayat,
+  RiwayatSelesai,
   ScanQRCode,
   Login,
   Daftar,
@@ -74,7 +75,9 @@ const ScanStack = createStackNavigator(
 const RiwayatStack = createStackNavigator(
   {
     Riwayat,
+    RiwayatSelesai,
     DetailPinjamBuku,
+    DetailBuku,
     QRKembali,
   },
   {

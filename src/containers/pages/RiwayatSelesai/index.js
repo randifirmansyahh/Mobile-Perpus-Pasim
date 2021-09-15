@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import GarisKecil from './../../../components/atoms/GarisKecil/index';
 import IconLoading from './../../../components/atoms/IconLoading/index';
 
-export default class Riwayat extends React.Component {
+export default class RiwayatSelesai extends React.Component {
   componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
     this.setState = (state, callback) => {
@@ -23,7 +23,7 @@ export default class Riwayat extends React.Component {
     };
 
     this.url =
-      'https://perpuspasim.000webhostapp.com/ApiPinjamBuku.php?op=aktif&id=';
+      'https://perpuspasim.000webhostapp.com/ApiPinjamBuku.php?op=nonaktif&id=';
   }
 
   componentDidMount() {
@@ -69,16 +69,13 @@ export default class Riwayat extends React.Component {
               borderBottomWidth: 1,
             }}>
             <TouchableOpacity
-              // onPress={props.onPress}
+              onPress={() => this.props.navigation.navigate('Riwayat')}
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundColor: 'white',
                 height: 60,
-                borderBottomWidth: 2,
-                borderColor: '#540000',
-                backgroundColor: '#ebebeb',
                 // backgroundColor: props.active ? '#ebebeb' : 'white',
               }}>
               <View
@@ -98,7 +95,7 @@ export default class Riwayat extends React.Component {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('RiwayatSelesai')}
+              // onPress={props.onPress}
               style={{
                 flex: 1,
                 alignItems: 'center',
@@ -106,6 +103,8 @@ export default class Riwayat extends React.Component {
                 backgroundColor: 'white',
                 height: 60,
                 // borderTopWidth: props.active ? 2 : 0,
+                borderBottomWidth: 2,
+                backgroundColor: '#ebebeb',
                 borderColor: '#540000',
                 // backgroundColor: props.active ? '#ebebeb' : 'white',
               }}>
@@ -135,7 +134,7 @@ export default class Riwayat extends React.Component {
             {this.state.isLoading == true ? <IconLoading /> : null}
             {this.state.listData.length == 0 &&
             this.state.isLoading == false ? (
-              <Text>Belum ada data peminjaman</Text>
+              <Text>Belum ada data peminjaman selesai</Text>
             ) : null}
             {this.state.listData.map((val, index) => (
               <View style={styles.box} key={index}>
@@ -144,11 +143,11 @@ export default class Riwayat extends React.Component {
                   onPress={() => {
                     AsyncStorage.setItem('@idBuku', val.idBuku);
                     AsyncStorage.setItem('@idPinjam', val.id);
-                    this.props.navigation.navigate('DetailPinjamBuku');
+                    this.props.navigation.navigate('DetailBuku');
                   }}>
                   <Text style={styles.judul}>{val.judul}</Text>
                   <Text style={styles.waktu}>
-                    Batas Peminjaman : {val.batas}
+                    Tanggal peminjaman : {val.waktu}
                   </Text>
                 </TouchableOpacity>
                 <GarisKecil />
